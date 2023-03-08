@@ -15,6 +15,7 @@ spec:
     chart: traefik
     helm:
       parameters:
-        deployment.kind: DaemonSet
+        - name: deployment.kind
+          value: DaemonSet
     repoURL: https://traefik.github.io/charts
     targetRevision: v21.2.0
