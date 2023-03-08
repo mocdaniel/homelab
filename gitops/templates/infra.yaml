@@ -18,7 +18,7 @@ spec:
     helm:
       parameters:
         - name: metallb.addresspool
-          value: {{ .Value.metallb.addresspool }}
+          value: {{ .Values.metallb.addresspool }}
   syncPolicy:
     automated:
       selfHeal: true
