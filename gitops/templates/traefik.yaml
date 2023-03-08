@@ -19,3 +19,8 @@ spec:
           value: DaemonSet
     repoURL: https://traefik.github.io/charts
     targetRevision: v21.2.0
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
