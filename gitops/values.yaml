@@ -1,3 +1,1 @@
-metallb:
-  addresspool: 192.168.178.220/30
 domain: bodkys.house
