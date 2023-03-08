@@ -19,6 +19,9 @@ spec:
       parameters:
         - name: metallb.addresspool
           value: {{ .Values.metallb.addresspool }}
+        - name: domain
+          value: {{ .Values.domain }}
+  annotations:
   syncPolicy:
     automated:
       selfHeal: true
