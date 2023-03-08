@@ -1,4 +1,5 @@
 ---
 metallb:
   addresspool:
+domain:
 
