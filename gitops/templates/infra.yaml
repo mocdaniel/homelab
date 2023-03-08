@@ -1,0 +1,26 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-bootstrap
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.sv
+  project: default
+  source:
+    path: gitops/infra
+    repoURL: https://github.com/mocdaniel/homelab
+    targetRevision: HEAD
+    helm:
+      parameters:
+        - name: metallb.addresspool
+          value: {{ .Value.metallb.addresspool }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
