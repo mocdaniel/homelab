@@ -17,8 +17,6 @@ spec:
     targetRevision: HEAD
     helm:
       parameters:
-        - name: metallb.addresspool
-          value: {{ .Values.metallb.addresspool }}
         - name: domain
           value: {{ .Values.domain }}
   annotations:
