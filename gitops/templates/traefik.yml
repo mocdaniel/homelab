@@ -1,26 +1,25 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx
+  name: traefik
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
   destination:
-    namespace: nginx-ingress
+    namespace: traefik
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: nginx-ingress
+    chart: traefik
     helm:
       parameters:
-      - name: controller.kind
-        value: daemonset
-    repoURL: https://helm.nginx.com/stable
-    targetRevision: 0.16.2
+        - name: deployment.kind
+          value: DaemonSet
+    repoURL: https://traefik.github.io/charts
+    targetRevision: v21.2.0
   syncPolicy:
     automated:
       prune: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
