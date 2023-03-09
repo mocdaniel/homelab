@@ -5,7 +5,7 @@ metadata:
   name: ingress-argocd
   namespace: argocd
   annotations:
-    kubernetes.io/ingress.class: "nginx" 
+    kubernetes.io/ingress.class: "public" 
 spec:
   rules:
   - host: argocd.{{ .Values.domain }}
