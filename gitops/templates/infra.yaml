@@ -19,7 +19,7 @@ spec:
       parameters:
         - name: domain
           value: {{ .Values.domain }}
-        - name: metallb.addresspool:
+        - name: metallb.addresspool
           value: {{ .Values.metallb.addresspool }}
   annotations:
   syncPolicy:
