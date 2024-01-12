@@ -1,3 +1,6 @@
 .venv/
 .vscode/
+.terraform/
 .env
+*.terraform*
+*.tfstate*
