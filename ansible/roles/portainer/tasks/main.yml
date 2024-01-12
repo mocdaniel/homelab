@@ -1,0 +1,64 @@
+---
+# tasks file for portainer
+- name: Create portainer volume
+  community.docker.docker_volume:
+    name: "{{ portainer_volume_name }}"
+
+- name: Compile list of needed volumes
+  block:
+    - name: Portainer Volume
+      ansible.builtin.set_fact:
+        portainer_volumes:
+          - "{{ portainer_volume_name }}:/data"
+    - name: Docker Socket
+      ansible.builtin.set_fact:
+        portainer_volumes: "{{ portainer_volumes + [portainer_docker_socket + ':/var/run/docker.sock'] }}"
+    - name: Let's Encrypt Certificates
+      when: portainer_use_letsencrypt and portainer_letsencrypt_domain is defined
+      ansible.builtin.set_fact:
+        portainer_volumes: "{{ portainer_volumes + [portainer_letsencrypt_archive_dir + '/' + portainer_letsencrypt_domain + \
+          ':/certs/archive/' + portainer_letsencrypt_domain + ':ro', portainer_letsencrypt_live_dir + '/' + \
+          portainer_letsencrypt_domain + ':/certs/live/' + portainer_letsencrypt_domain + ':ro'] }}"
+    - name: External Certificates
+      when: portainer_use_external_certs and portainer_external_certs_dir is defined
+      ansible.builtin.set_fact:
+        portainer_volumes: "{{ portainer_volumes + [portainer_external_certs_dir + ':/certs:ro'] }}"
+
+- name: Compile configuration options
+  block:
+    - name: Add Let's Encrypt certificates
+      when: portainer_use_letsencrypt and portainer_letsencrypt_domain is defined
+      ansible.builtin.set_fact:
+        portainer_configuration_options:
+          - "--sslcert=/certs/live/{{ portainer_letsencrypt_domain }}/fullchain.pem"
+          - "--sslkey=/certs/live/{{ portainer_letsencrypt_domain }}/privkey.pem"
+    - name: Add external certificates
+      when: portainer_use_external_certs and portainer_external_certs_dir is defined
+      ansible.builtin.set_fact:
+        portainer_configuration_options:
+          - "--sslcert=/certs/cert.pem"
+          - "--sslkey=/certs/key.pem"
+    - name: Force HTTPS
+      when: portainer_force_https
+      ansible.builtin.set_fact:
+        portainer_configuration_options: "{{ portainer_configuration_options + ['--http-disabled'] }}"
+    - name: Pass license key
+      when: portainer_license_key is defined and portainer_edition == "ee"
+      ansible.builtin.set_fact:
+        portainer_configuration_options: "{{ portainer_configuration_options + ['--license-key=' + portainer_license_key] }}"
+    - name: Pass admin password
+      when: portainer_admin_password is defined
+      ansible.builtin.set_fact:
+        portainer_configuration_options: "{{ portainer_configuration_options + ['--admin-password=' + portainer_admin_password] }}"
+
+- name: Create portainer container
+  community.docker.docker_container:
+    name: "{{ portainer_container_name }}"
+    image: "{{ portainer_image }}"
+    state: started
+    restart_policy: "{{ portainer_restart_policy }}"
+    volumes: "{{ portainer_volumes }}"
+    ports:
+      - "{{ portainer_tunnel_port }}:8000"
+      - "{{ portainer_web_port }}:9443"
+    command: "{{ portainer_configuration_options }}"
