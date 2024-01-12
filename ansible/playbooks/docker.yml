@@ -1,0 +1,9 @@
+- name: Install Docker CE
+  hosts: docker
+  become: true
+  tags: ["docker"]
+  vars:
+    docker_install_compose_plugin: true
+    docker_apt_ignore_key_error: false
+  roles:
+    - role: geerlingguy.docker
