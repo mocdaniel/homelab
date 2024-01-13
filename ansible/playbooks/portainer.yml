@@ -25,16 +25,8 @@
           30313363663838323637326335396634613665343065616237666366326461623834633938356237
           643335326431386339373964356137303266
     portainer_edition: ee
-    portainer_extra_labels:
-      traefik.enable: "true"
-      traefik.http.routers.portainer.entrypoints: websecure
-      traefik.http.routers.portainer.rule: Host(`portainer.bodkys.house`)
-      traefik.http.routers.portainer.tls.certresolver: letsencrypt
-      traefik.http.routers.portainer.tls: "true"
-    portainer_force_https: "true"
+    portainer_force_https: true
     portainer_letsencrypt_domain: portainer.bodkys.house
-    portainer_networks:
-      - name: traefik
     portainer_license_key: !vault |
           $ANSIBLE_VAULT;1.2;AES256;homelab
           35343065383265313135313465626632656531393431343334643431396563326364316231303961
