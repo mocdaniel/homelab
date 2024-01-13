@@ -5,9 +5,11 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ghostfolio.rule=Host(`ghostfolio.bodkys.house`)"
-      - "traefik.http.routers.ghostfolio.entrypoints=websecure"
+      - "traefik.http.routers.ghostfolio.entrypoints=websecure,web"
       - "traefik.http.routers.ghostfolio.tls=true"
       - "traefik.http.routers.ghostfolio.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.permanent=true"
     image: ghostfolio/ghostfolio:2.37.0
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/ghostfolio?connect_timeout=300&sslmode=prefer
