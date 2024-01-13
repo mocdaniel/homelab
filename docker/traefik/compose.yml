@@ -2,10 +2,18 @@ version: '3'
 
 services:
   traefik:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.tls=true"
+      - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.bodkys.house`)"
+      - "traefik.http.routers.dashboard.service=api@internal"
+      - "traefik.http.routers.dashboard.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=daniel:$$2y$$05$$KPgO1p2afBo4YvPkM.USauSYxEk2xKR9LG90k4I7KKanNbNYESGwS"
     image: traefik:v2.11
-    # Enables the web UI and tells Traefik to listen to docker
     command:
-      - "--api.insecure=true"
+      - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
