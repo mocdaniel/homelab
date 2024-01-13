@@ -62,5 +62,3 @@
       - "{{ portainer_tunnel_port }}:8000"
       - "{{ portainer_web_port }}:9443"
     command: "{{ portainer_configuration_options }}"
-    labels: "{{ portainer_extra_labels }}"
-    networks: "{{ portainer_networks }}"

@@ -5,14 +5,12 @@ portainer_container_name: portainer
 portainer_docker_socket: /var/run/docker.sock
 portainer_edition: ce
 # portainer_external_certs_dir: /certs
-portainer_extra_labels: {}
 portainer_force_https: false
 portainer_image: portainer/portainer-{{ portainer_edition }}:{{ portainer_version }}
 portainer_letsencrypt_archive_dir: /etc/letsencrypt/archive
 # portainer_letsencrypt_domain: example.com
 portainer_letsencrypt_live_dir: /etc/letsencrypt/live
 # portainer_license_key: ""
-portainer_networks: []
 portainer_restart_policy: always
 portainer_tunnel_port: 8000
 portainer_use_letsencrypt: false
