@@ -7,4 +7,10 @@ resource "namecheap_domain_records" "bodkys-house" {
     type = "A"
     address = "185.11.255.12"
   }
+
+  record {
+    hostname = "ghostfolio"
+    type = "A"
+    address = "185.11.255.65"
+  }
 }
