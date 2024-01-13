@@ -2,6 +2,8 @@
 version: '3.9'
 services:
   ghostfolio:
+    labels:
+      - traefik.http.routers.ghostfolio.rule=Host(`ghostfolio.bodkys.house`)
     image: ghostfolio/ghostfolio:2.37.0
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/ghostfolio?connect_timeout=300&sslmode=prefer
