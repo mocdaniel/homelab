@@ -1,0 +1,28 @@
+---
+version: '3.9'
+
+services:
+  heimdall:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.heimdall.rule=Host(`heimdall.bodkys.house`)"
+      - "traefik.http.routers.heimdall.entrypoints=websecure"
+      - "traefik.http.routers.heimdall.tls=true"
+      - "traefik.http.routers.heimdall.tls.certresolver=letsencrypt"
+    image: linuxserver/heimdall:2.5.8
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/Berlin
+    restart: unless-stopped
+    volumes:
+      - heimdall:/config
+    networks:
+      - traefik
+
+volumes:
+  heimdall:
+
+networks:
+  traefik:
+    external: true
