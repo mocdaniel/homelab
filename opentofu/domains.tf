@@ -13,4 +13,10 @@ resource "namecheap_domain_records" "bodkys-house" {
     type = "A"
     address = "185.11.255.65"
   }
+
+  record {
+    hostname = "actual"
+    type = "A"
+    address = "185.11.255.65"
+  }
 }
