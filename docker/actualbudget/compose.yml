@@ -4,11 +4,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.actual.rule=Host(`actual.bodkys.house`)"
-      - "traefik.http.routers.actual.entrypoints=websecure,web"
+      - "traefik.http.routers.actual.entrypoints=websecure"
       - "traefik.http.routers.actual.tls=true"
       - "traefik.http.routers.actual.tls.certresolver=letsencrypt"
-      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.permanent=true"
     image: actualbudget/actual-server:24.1.0
     volumes:
       # Change './actual-data' below to the path to the folder you want Actual to store its data in on your server.
