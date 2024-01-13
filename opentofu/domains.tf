@@ -27,7 +27,7 @@ resource "namecheap_domain_records" "bodkys-house" {
   }
 
   record {
-    hostname = "dashy"
+    hostname = "heimdall"
     type = "A"
     address = "185.11.255.65"
   }
