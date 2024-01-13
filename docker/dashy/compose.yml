@@ -1,0 +1,21 @@
+---
+version: '3.9'
+
+services:
+  dashy:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dashy.rule=Host(`dashy.bodkys.house`)"
+      - "traefik.http.routers.dashy.entrypoints=websecure"
+      - "traefik.http.routers.dashy.tls=true"
+      - "traefik.http.routers.dashy.tls.certresolver=letsencrypt"
+    image: lissy93/dashy:2.1.1
+    restart: unless-stopped
+    volumes:
+      - /etc/dashy/conf.yml:/public/conf.yml
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true
