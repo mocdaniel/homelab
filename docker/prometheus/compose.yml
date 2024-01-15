@@ -1,0 +1,32 @@
+---
+version: '3.9'
+
+services:
+  prometheus:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.prometheus.rule=Host(`prometheus.bodkys.house`)"
+      - "traefik.http.routers.prometheus.entrypoints=websecure"
+      - "traefik.http.routers.prometheus.tls=true"
+      - "traefik.http.routers.prometheus.tls.certresolver=myresolver"
+      - "traefik.http.routers.prometheus.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
+    image: prom/prometheus:v2.49.1
+    volumes:
+      - prometheus-data:/prometheus
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml  # this only works with Portainer!
+      - ./rules.yml:/etc/prometheus/rules.yml
+    networks:
+      - traefik
+
+  alertmanager:
+    image: prom/alertmanager:v0.26.0
+    networks:
+      - traefik
+
+volumes:
+  prometheus-data:
+
+networks:
+  traefik:
+    external: true
