@@ -15,6 +15,7 @@ services:
     restart: unless-stopped
     volumes:
       - prometheus-data:/prometheus
+      - /etc/prometheus/alertmanager.password:/etc/prometheus/alertmanager.password
       - ./prometheus.yml:/etc/prometheus/prometheus.yml  # this only works with Portainer!
       - ./rules.yml:/etc/prometheus/rules.yml
     networks:
