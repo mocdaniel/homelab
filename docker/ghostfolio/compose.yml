@@ -9,7 +9,7 @@ services:
       - "traefik.http.routers.ghostfolio.entrypoints=websecure"
       - "traefik.http.routers.ghostfolio.tls=true"
       - "traefik.http.routers.ghostfolio.tls.certresolver=letsencrypt"
-    image: ghostfolio/ghostfolio:2.40.0
+    image: ghostfolio/ghostfolio:2.41.0
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/ghostfolio?connect_timeout=300&sslmode=prefer
       NODE_ENV: production
