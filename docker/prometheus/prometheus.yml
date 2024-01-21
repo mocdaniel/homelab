@@ -10,9 +10,6 @@ scrape_configs:
 
 alerting:
   alertmanagers:
-    - scheme: https
-      basic_auth:
-        password_file: /etc/prometheus/alertmanager.password
-      static_configs:
+    - static_configs:
         - targets:
-            - alertmanager.bodkys.house
+            - alertmanager:9093
