@@ -1,5 +1,5 @@
 ---
-version: '3.9'
+version: "3.9"
 
 services:
   prometheus:
@@ -8,15 +8,14 @@ services:
       - "traefik.http.routers.prometheus.rule=Host(`prometheus.bodkys.house`)"
       - "traefik.http.routers.prometheus.entrypoints=websecure"
       - "traefik.http.routers.prometheus.tls=true"
-      - "traefik.http.routers.prometheus.tls.certresolver=myresolver"
+      - "traefik.http.routers.prometheus.tls.certresolver=letsencrypt"
       - "traefik.http.routers.prometheus.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
     image: prom/prometheus:v2.49.1
     restart: unless-stopped
     volumes:
       - prometheus-data:/prometheus
-      - /etc/prometheus/alertmanager.password:/etc/prometheus/alertmanager.password
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml  # this only works with Portainer!
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml # this only works with Portainer!
       - ./rules.yml:/etc/prometheus/rules.yml
     networks:
       - traefik
@@ -27,7 +26,7 @@ services:
       - "traefik.http.routers.alertmanager.rule=Host(`alertmanager.bodkys.house`)"
       - "traefik.http.routers.alertmanager.entrypoints=websecure"
       - "traefik.http.routers.alertmanager.tls=true"
-      - "traefik.http.routers.alertmanager.tls.certresolver=myresolver"
+      - "traefik.http.routers.alertmanager.tls.certresolver=letsencrypt"
       - "traefik.http.routers.alertmanager.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
     image: prom/alertmanager:v0.26.0
