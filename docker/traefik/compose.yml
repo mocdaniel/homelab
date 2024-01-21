@@ -1,5 +1,5 @@
 ---
-version: '3.9'
+version: "3.9"
 
 services:
   traefik:
@@ -12,8 +12,8 @@ services:
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
-#      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.scheme=https"
-#      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.permanent=true"
+    #      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.scheme=https"
+    #      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.permanent=true"
     image: traefik:v2.11
     command:
       - "--log.level=DEBUG"
@@ -25,7 +25,7 @@ services:
       - "--providers.docker.network=traefik"
       - "--certificatesresolvers.letsencrypt.acme.email=${ACME_EMAIL}"
       - "--certificatesresolvers.letsencrypt.acme.storage=/etc/traefik/acme/acme.json"
-      - "--certificatesresolvers.letsencrypt.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.letsencrypt.acme.caServer=https://acme-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
     environment:
       ACME_EMAIL: ${ACME_EMAIL}
