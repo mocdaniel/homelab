@@ -12,7 +12,7 @@
         widget:
           type: ghostfolio
           url: https://ghostfolio.bodkys.house
-          key: {{ HOMEPAGE_VAR_GHOSTFOLIO_TOKEN }}
+          key: "{{HOMEPAGE_VAR_GHOSTFOLIO_TOKEN}}"
 
 - Infrastructure:
     - Portainer:
@@ -23,7 +23,7 @@
           type: portainer
           url: https://portainer.bodkys.house
           env: 3
-          key: {{ HOMEPAGE_VAR_PORTAINER_TOKEN }}
+          key: "{{HOMEPAGE_VAR_PORTAINER_TOKEN}}"
 
     - Traefik:
         href: https://traefik.bodkys.house/
@@ -33,7 +33,7 @@
           type: traefik
           url: https://traefik.bodkys.house
           username: daniel
-          password: {{ HOMEPAGE_VAR_TRAEFIK_PASSWORD }}
+          password: "{{HOMEPAGE_VAR_TRAEFIK_PASSWORD}}"
 
     - Prometheus:
         href: https://prometheus.bodkys.house/
