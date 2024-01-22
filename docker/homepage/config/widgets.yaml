@@ -1,7 +1,4 @@
 ---
-- greeting:
-    text_size: xl
-    text: Aloha!
 - openmeteo:
     label: Erlangen
     latitude: 49.583332
@@ -18,6 +15,7 @@
     disk: /
 - datetime:
     text_size: xl
-    dateStyle: long
-    timeStyle: long
+    format:
+      dateStyle: long
+      timeStyle: long
     locale: de
