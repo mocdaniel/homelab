@@ -1,0 +1,26 @@
+---
+version: "3.9"
+
+services:
+  homepage:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homepage.rule=Host(`home.bodkys.house`)"
+      - "traefik.http.routers.homepage.entrypoints=websecure"
+      - "traefik.http.routers.homepage.tls=true"
+      - "traefik.http.routers.homepage.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.homepage.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
+    image: ghcr.io/gethomepage/homepage:v0.8.6
+    container_name: homepage
+    volumes:
+      - homepage_data:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped
+
+volumes:
+  homepage_data:
+
+networks:
+  traefik:
+    external: true
