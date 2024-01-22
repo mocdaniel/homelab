@@ -12,6 +12,7 @@ services:
       - "traefik.http.routers.prometheus.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
     image: prom/prometheus:v2.49.1
+    container_name: prometheus
     restart: unless-stopped
     volumes:
       - prometheus-data:/prometheus
@@ -30,6 +31,7 @@ services:
       - "traefik.http.routers.alertmanager.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
     image: prom/alertmanager:v0.26.0
+    container_name: alertmanager
     restart: unless-stopped
     networks:
       - traefik

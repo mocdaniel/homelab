@@ -10,6 +10,7 @@ services:
       - "traefik.http.routers.actual.tls=true"
       - "traefik.http.routers.actual.tls.certresolver=letsencrypt"
     image: actualbudget/actual-server:edge
+    container_name: actual
     volumes:
       # Change './actual-data' below to the path to the folder you want Actual to store its data in on your server.
       # '/data' is the path Actual will look for its files in by default, so leave that as-is.

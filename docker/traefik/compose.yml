@@ -15,6 +15,7 @@ services:
     #      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.scheme=https"
     #      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.permanent=true"
     image: traefik:v2.11
+    container_name: traefik
     command:
       - "--log.level=DEBUG"
       - "--api.dashboard=true"
