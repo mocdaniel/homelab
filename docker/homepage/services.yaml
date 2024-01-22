@@ -1,0 +1,49 @@
+---
+- Finances:
+    - Actual Budget:
+        href: https://actual.bodkys.house/
+        siteMonitor: http://actual:5006/
+        description: Budgeting made easy
+
+    - Ghostfolio:
+        href: https://ghostfolio.bodkys.house/
+        siteMonitor: http://ghostfolio:3333/
+        description: One app to track them all
+        widget:
+          type: ghostfolio
+          url: https://ghostfolio.bodkys.house
+          key: {{ HOMEPAGE_VAR_GHOSTFOLIO_TOKEN }}
+
+- Infrastructure:
+    - Portainer:
+        href: https://portainer.bodkys.house/
+        siteMonitor: https://portainer.bodkys.house/
+        description: Poor man's Kubernetes 😜
+        widget:
+          type: portainer
+          url: https://portainer.bodkys.house
+          env: 3
+          key: {{ HOMEPAGE_VAR_PORTAINER_TOKEN }}
+
+    - Traefik:
+        href: https://traefik.bodkys.house/
+        siteMonitor: https://traefik.bodkys.house/dashboard/
+        description: A modern reverse proxy
+        widget:
+          type: traefik
+          url: https://traefik.bodkys.house
+          username: daniel
+          password: {{ HOMEPAGE_VAR_TRAEFIK_PASSWORD }}
+
+    - Prometheus:
+        href: https://prometheus.bodkys.house/
+        siteMonitor: http://prometheus:9090/
+        description: Monitoring for the masses
+        widget:
+          type: prometheus
+          url: http://prometheus:9090/
+
+    - Alertmanager:
+        href: https://alertmanager.bodkys.house
+        siteMonitor: http://alertmanager:9093/
+        description: Alerting for the masses

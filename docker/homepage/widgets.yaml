@@ -1,0 +1,10 @@
+- openmeteo:
+    label: Erlangen
+    latitude: 49.583332
+    longitude: 11.016667
+    timezone: Europe/Berlin
+    units: metric
+    cache: 5
+- search:
+    provider: google
+    focus: true
