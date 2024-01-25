@@ -9,7 +9,7 @@ services:
       - "traefik.http.routers.ghostfolio.entrypoints=websecure"
       - "traefik.http.routers.ghostfolio.tls=true"
       - "traefik.http.routers.ghostfolio.tls.certresolver=letsencrypt"
-    image: ghostfolio/ghostfolio:2.43.1
+    image: ghostfolio/ghostfolio:2.44.0
     container_name: ghostfolio
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/ghostfolio?connect_timeout=300&sslmode=prefer
@@ -25,6 +25,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
     depends_on:
       postgres:
         condition: service_healthy
@@ -46,6 +47,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
     volumes:
       - postgres:/var/lib/postgresql/data
     networks:
@@ -62,6 +64,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
     networks:
       - ghostfolio
 
