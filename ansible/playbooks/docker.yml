@@ -5,5 +5,7 @@
   vars:
     docker_install_compose_plugin: true
     docker_apt_ignore_key_error: false
+    docker_daemon_options:
+      metrics-addr: "{{ docker_metrics_endpoint }}"
   roles:
     - role: geerlingguy.docker
