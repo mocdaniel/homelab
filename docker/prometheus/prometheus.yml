@@ -7,11 +7,24 @@ rule_files:
   - /etc/prometheus/rules.yml
 
 scrape_configs:
-  - job_name: docker
+  - job_name: docker-dbodky-staff1
     static_configs:
       - targets:
           - 10.77.13.135:9323
-          - 10.77.13.135:9323
+    relabel_configs:
+      - source_labels:
+          - instance
+        target_label: instance
+        replacement: dbodky-staff1
+  - job_name: docker-dbodky-staff2
+    static_configs:
+      - targets:
+          - 10.77.13.187:9323
+    relabel_configs:
+      - source_labels:
+          - instance
+        target_label: instance
+        replacement: dbodky-staff2
 
 alerting:
   alertmanagers:
