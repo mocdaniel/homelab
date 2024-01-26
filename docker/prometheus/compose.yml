@@ -45,7 +45,10 @@ services:
       - "traefik.http.routers.cadvisor.tls.certresolver=letsencrypt"
       - "traefik.http.middlewares.cadvisor-prefixstripper.stripprefix.prefixes=/cadvisor"
       - "traefik.http.middlewares.cadvisor-prefixstripper.stripprefix.forceSlash=false"
-      - "traefik.http.routers.cadvisor.middlewares=auth,cadvisor-prefixstripper"
+      - "traefik.http.routers.cadvisor.middlewares=auth,cadvisor-prefixstripper,cadvisor-redirect"
+      - "traefik.http.middlewares.cadvisor-redirect.plugin.rewriteHeaders.rewrites[0].header=Location"
+      - "traefik.http.middlewares.cadvisor-redirect.plugin.rewriteHeaders.rewrites[0].regex=^(.+)$$"
+      - "traefik.http.middlewares.cadvisor-redirect.plugin.rewriteHeaders.rewrites[0].replacement=/cadvisor$$1"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
     image: gcr.io/cadvisor/cadvisor:v0.47.2
     container_name: cadvisor
