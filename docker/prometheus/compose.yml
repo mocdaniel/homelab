@@ -56,7 +56,7 @@ services:
       - /dev/disk/:/dev/disk:ro
     devices:
       - /dev/kmsg
-    privileged:
+    privileged: true
     networks:
       - traefik
 
