@@ -39,10 +39,10 @@ services:
   cadvisor:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.cadvisor.rule=Host(`prometheus.bodkys.house`)&&Prefix(`/cadvisor`)"
+      - "traefik.http.routers.cadvisor.rule=Host(`prometheus.bodkys.house`)&&PathPrefix(`/cadvisor/`)"
       - "traefik.http.routers.cadvisor.entrypoints=websecure"
       - "traefik.http.routers.cadvisor.tls=true"
-      - "traefik.http.routers.cadvisor.tls=certresolver=letsencrypt"
+      - "traefik.http.routers.cadvisor.tls.certresolver=letsencrypt"
       - "traefik.http.routers.alertmanager.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
     image: gcr.io/cadvisor/cadvisor:v0.36.0
