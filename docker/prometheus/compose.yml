@@ -43,9 +43,11 @@ services:
       - "traefik.http.routers.cadvisor.entrypoints=websecure"
       - "traefik.http.routers.cadvisor.tls=true"
       - "traefik.http.routers.cadvisor.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.alertmanager.middlewares=auth"
+      - "traefik.http.middlewares.cadvisor-prefixstripper.stripprefix.prefixes=/cadvisor"
+      - "traefik.http.middlewares.cadvisor-prefixstripper.stripprefix.forceSlash=false"
+      - "traefik.http.routers.cadvisor.middlewares=auth,cadvisor-prefixstripper"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
-    image: gcr.io/cadvisor/cadvisor:v0.36.0
+    image: gcr.io/cadvisor/cadvisor:v0.47.2
     container_name: cadvisor
     restart: unless-stopped
     volumes:
