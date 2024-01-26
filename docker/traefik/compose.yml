@@ -12,8 +12,6 @@ services:
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
-    #      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.scheme=https"
-    #      - "traefik.http.middlewares.redirectHTTPS.redirectscheme.permanent=true"
     image: traefik:v2.11
     container_name: traefik
     command:
