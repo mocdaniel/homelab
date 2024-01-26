@@ -25,6 +25,8 @@ services:
       - "--certificatesresolvers.letsencrypt.acme.storage=/etc/traefik/acme/acme.json"
       - "--certificatesresolvers.letsencrypt.acme.caServer=https://acme-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+      - "--experimental.plugins.rewriteHeaders.moduleName=github.com/XciD/traefik-plugin-rewrite-headers"
+      - "--experimental.plugins.rewriteHeaders.version=v0.0.4"
     environment:
       ACME_EMAIL: ${ACME_EMAIL}
     ports:
