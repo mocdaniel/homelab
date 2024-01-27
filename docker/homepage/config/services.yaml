@@ -4,11 +4,13 @@
         href: https://actual.bodkys.house/
         siteMonitor: http://actual:5006/
         description: Budgeting made easy
+        icon: actual
 
     - Ghostfolio:
         href: https://ghostfolio.bodkys.house/
         siteMonitor: http://ghostfolio:3333/
         description: One app to track them all
+        icon: ghostfolio
         widget:
           type: ghostfolio
           url: https://ghostfolio.bodkys.house
@@ -19,6 +21,7 @@
         href: https://portainer.bodkys.house/
         siteMonitor: https://portainer.bodkys.house/
         description: Poor man's Kubernetes 😜
+        icon: portainer
         widget:
           type: portainer
           url: https://portainer.bodkys.house
@@ -29,6 +32,7 @@
         href: https://traefik.bodkys.house/
         siteMonitor: https://traefik.bodkys.house/dashboard/
         description: A modern reverse proxy
+        icon: traefik
         widget:
           type: traefik
           url: https://traefik.bodkys.house
@@ -39,11 +43,32 @@
         href: https://prometheus.bodkys.house/
         siteMonitor: http://prometheus:9090/
         description: Monitoring for the masses
+        icon: prometheus
         widget:
           type: prometheus
           url: http://prometheus:9090/
 
     - Alertmanager:
-        href: https://alertmanager.bodkys.house
+        href: https://alertmanager.bodkys.house/
         siteMonitor: http://alertmanager:9093/
         description: Alerting for the masses
+        icon: alertmanager
+
+    - cAdvisor:
+        href: https://prometheus.bodkys.house/cadvisor/
+        siteMonitor: http://cadvisor:8080/
+        description: Container stats for Prometheus
+        icon: cadvisor
+
+- Website:
+    - Blog:
+        href: https://dbodky.me/
+        siteMonitor: https://dbodky.me/
+        description: My personal blog
+        icon: hugo
+
+    - Umami:
+        href: https://umami.bodkys.house/
+        siteMonitor: https://umami.bodkys.house/
+        description: My personal analytics
+        icon: umami

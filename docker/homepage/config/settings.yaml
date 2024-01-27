@@ -12,4 +12,6 @@ layout:
     columns: 4
   Finances:
     style: col
+  Website:
+    style: col
 useEqualHeights: true
