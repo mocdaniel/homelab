@@ -11,13 +11,14 @@ services:
       - "traefik.http.routers.umami.tls.certresolver=letsencrypt"
     image: ghcr.io/umami-software/umami:postgresql-v2.9.0
     environment:
-      DATABASE_URL: postgresql://umami:${POSTGRES_PASSWORD}@postgres:5432/umami
+      DATABASE_URL: postgresql://umami:${POSTGRES_PASSWORD}@umami_postgres:5432/umami
       DATABASE_TYPE: postgresql
       APP_SECRET: ${APP_SECRET}
     depends_on:
-      db:
+      umami_postgres:
         condition: service_healthy
-    restart: always
+    restart: unless-stopped
+    container_name: umami
     healthcheck:
       test: ["CMD-SHELL", "curl http://localhost:3000/api/heartbeat"]
       interval: 5s
@@ -26,7 +27,7 @@ services:
     networks:
       - traefik
 
-  db:
+  umami_postgres:
     image: postgres:15.5
     environment:
       POSTGRES_DB: umami
@@ -34,7 +35,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - umami-db-data:/var/lib/postgresql/data
-    restart: always
+    restart: unless-stopped
+    container_name: umami-postgres
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
