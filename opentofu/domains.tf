@@ -49,4 +49,10 @@ resource "namecheap_domain_records" "bodkys-house" {
     type = "A"
     address = "185.11.255.65"
   }
+
+  record {
+    hostname = "wud"
+    type = "A"
+    address = "185.11.255.65"
+  }
 }
