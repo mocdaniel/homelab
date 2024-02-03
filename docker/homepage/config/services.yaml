@@ -48,6 +48,15 @@
           type: prometheus
           url: http://prometheus:9090/
 
+    - "What's Up Docker?":
+        href: https://wud.bodkys.house/
+        siteMonitor: https://whatsupdocker:3000
+        description: Keeps watch of your Docker container versions
+        icon: wud
+        widget:
+            type: whatsupdocker
+            url: http://whatsupdocker:3000
+
     - Alertmanager:
         href: https://alertmanager.bodkys.house/
         siteMonitor: http://alertmanager:9093/
