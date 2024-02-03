@@ -50,7 +50,7 @@
 
     - "What's Up Docker?":
         href: https://wud.bodkys.house/
-        siteMonitor: https://whatsupdocker:3000
+        siteMonitor: http://whatsupdocker:3000
         description: Keeps watch of your Docker container versions
         icon: wud
         widget:

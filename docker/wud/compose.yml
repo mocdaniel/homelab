@@ -9,11 +9,11 @@ services:
       - "traefik.http.routers.whatsupdocker.tls=true"
       - "traefik.http.routers.whatsupdocker.tls.certresolver=letsencrypt"
       - "traefik.http.routers.whatsupdocker.rule=Host(`wud.bodkys.house`)"
+      - "traefik.http.routers.whatsupdocker.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
     image: fmartinou/whats-up-docker:6.3.0
     container_name: whatsupdocker
     environment:
-      WUD_AUTH_BASIC_DANIEL_USER: daniel
-      WUD_AUTH_BASIC_DANIEL_HASH: $$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91
       TZ: Europe/Berlin
 
     volumes:
