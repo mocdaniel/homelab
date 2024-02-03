@@ -1,0 +1,30 @@
+---
+version: "3.9"
+
+services:
+  whatsupdocker:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whatsupdocker.entrypoints=websecure"
+      - "traefik.http.routers.whatsupdocker.tls=true"
+      - "traefik.http.routers.whatsupdocker.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.whatsupdocker.rule=Host(`wud.bodkys.house`)"
+    image: fmartinou/whats-up-docker:6.3.0
+    container_name: whatsupdocker
+    environment:
+      WUD_AUTH_BASIC_DANIEL_USERNAME: daniel
+      WUD_AUTH_BASIC_DANIEL_HASH: $$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91
+      TZ: Europe/Berlin
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - whatsupdocker:/store
+    networks:
+      - traefik
+
+volumes:
+  whatsupdocker:
+
+networks:
+  traefik:
+    external: true
