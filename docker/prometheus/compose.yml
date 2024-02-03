@@ -11,6 +11,7 @@ services:
       - "traefik.http.routers.prometheus.tls.certresolver=letsencrypt"
       - "traefik.http.routers.prometheus.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
+      - wud.tag.include=^v\d+\.\d+\.\d+$$
     image: prom/prometheus:v2.49.1
     container_name: prometheus
     restart: unless-stopped
@@ -30,6 +31,7 @@ services:
       - "traefik.http.routers.alertmanager.tls.certresolver=letsencrypt"
       - "traefik.http.routers.alertmanager.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
+      - wud.tag.include=^v\d+\.\d+\.\d+$$
     image: prom/alertmanager:v0.26.0
     container_name: alertmanager
     restart: unless-stopped
@@ -50,6 +52,7 @@ services:
       - "traefik.http.middlewares.cadvisor-redirect.plugin.rewriteHeaders.rewrites[0].regex=^(.+)$$"
       - "traefik.http.middlewares.cadvisor-redirect.plugin.rewriteHeaders.rewrites[0].replacement=/cadvisor$$1"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
+      - wud.tag.include=^v\d+\.\d+\.\d+$$
     image: gcr.io/cadvisor/cadvisor:v0.47.2
     container_name: cadvisor
     restart: unless-stopped

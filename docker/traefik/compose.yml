@@ -12,6 +12,7 @@ services:
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
+      - wud.tag.include=^v\d+\.\d+(\.\d+)?$$
     image: traefik:v2.11
     container_name: traefik
     command:
