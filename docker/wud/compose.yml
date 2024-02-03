@@ -12,7 +12,7 @@ services:
     image: fmartinou/whats-up-docker:6.3.0
     container_name: whatsupdocker
     environment:
-      WUD_AUTH_BASIC_DANIEL_USERNAME: daniel
+      WUD_AUTH_BASIC_DANIEL_USER: daniel
       WUD_AUTH_BASIC_DANIEL_HASH: $$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91
       TZ: Europe/Berlin
 
