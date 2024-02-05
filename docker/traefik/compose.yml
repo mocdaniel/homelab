@@ -13,7 +13,7 @@ services:
       - "traefik.http.routers.traefik.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=daniel:$$apr1$$JdUzLtVZ$$tdsiHFb8Jk/aO9ydCVjG91"
       - wud.tag.include=^v\d+\.\d+(\.\d+)?$$
-    image: traefik:v2.11
+    image: traefik:v3.0
     container_name: traefik
     command:
       - "--api.dashboard=true"
