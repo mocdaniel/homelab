@@ -10,7 +10,7 @@ services:
       - "traefik.http.routers.homepage.tls=true"
       - "traefik.http.routers.homepage.tls.certresolver=letsencrypt"
       - wud.tag.include=^v\d+\.\d+\.\d+$$
-    image: ghcr.io/gethomepage/homepage:v0.8.7
+    image: ghcr.io/gethomepage/homepage:v0.8.8
     container_name: homepage
     environment:
       HOMEPAGE_VAR_PORTAINER_TOKEN: ${HOMEPAGE_VAR_PORTAINER_TOKEN}
