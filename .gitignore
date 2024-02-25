@@ -4,3 +4,6 @@
 .env
 *.terraform*
 *.tfstate*
+talos/*.yaml
+talos/talosconfig
+!talos/general.yaml
