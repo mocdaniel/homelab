@@ -5,14 +5,12 @@ All applications in the cluster are being managed by
 
 ## Installation
 
-ArgoCD gets installed for the first time using **Helm**
+ArgoCD gets installed for the first time using `kubectl`
 and consequently gets configured to **manage itself**.
 
 ```console
-helm repo add argo https://argoproj.github.io/argo-helm
-helm repo update
-helm install -n argocd --create-namespace \
-argocd argo/argo-cd --version 6.2.4
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
 Bootstrap ArgoCD to manage itself:

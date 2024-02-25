@@ -18,8 +18,11 @@ spec:
   orphanedResources:
     ignore:
       - kind: Application
-        group: argoproj.io/v1alpha1
+        group: argoproj.io
         name: bootstrap
+      - kind: AppProject
+        group: argoproj.io
+        name: default
     warn: true
   sourceNamespaces:
     - argocd
