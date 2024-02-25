@@ -2,8 +2,10 @@
 .vscode/
 .terraform/
 .env
+.DS_Store
 *.terraform*
 *.tfstate*
 talos/*.yaml
 talos/talosconfig
 !talos/general.yaml
+
