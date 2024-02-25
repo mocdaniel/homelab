@@ -17,6 +17,10 @@ spec:
     - namespace: argocd
       server: https://kubernetes.default.svc
   orphanedResources:
+    ignore:
+      - kind: Application
+        resourceGroup: argoproj.io/v1alpha1
+        name: bootstrap
     warn: true
   sourceNamespaces:
     - argocd
