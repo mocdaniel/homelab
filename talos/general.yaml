@@ -4,13 +4,10 @@ machine:
     image: ghcr.io/siderolabs/kubelet:v1.28.7
   install:
     disk: /dev/mmcblk0
-  disks:
-    - device: /dev/nvme0n1
-      partitions:
-        - mountpoint: /var/rook
 cluster:
   network:
     cni:
       name: none
   proxy:
     disabled: true
+  allowSchedulingOnControlPlanes: true
