@@ -49,6 +49,9 @@ spec:
       server: https://kubernetes.default.svc
   orphanedResources:
     warn: true
+    ignore:
+      - kind: Secret
+        name: cert-manager-webhook-ca
   sourceNamespaces:
     - argocd
   sourceRepos:
