@@ -28,3 +28,26 @@ spec:
     - argocd
   sourceRepos:
     - https://github.com/mocdaniel/homelab.git
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infrastructure
+  namespace: argocd
+spec:
+  clusterResourceBlacklist:
+    - group: cilium.io
+      kind: CiliumEndpoint
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  description: Infrastructure project
+  destinations:
+    - namespace: cert-manager
+      server: https://kubernetes.default.svc
+  orphanedResources:
+    warn: true
+  sourceNamespaces:
+    - argocd
+  sourceRepos:
+    - https://charts.jetstack.io

@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  annotations:
-    managed-by: argocd.argoproj.io
   labels:
     argocd.argoproj.io/secret-type: repository
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1000"
   name: repo-homelab
   namespace: argocd
 stringData:
@@ -17,10 +17,10 @@ type: Opaque
 apiVersion: v1
 kind: Secret
 metadata:
-  annotations:
-    managed-by: argocd.argoproj.io
   labels:
     argocd.argoproj.io/secret-type: repository
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1000"
   name: repo-argo
   namespace: argocd
 stringData:
@@ -28,3 +28,18 @@ stringData:
   project: argocd
   type: helm
   url: https://argoproj.github.io/argo-helm
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1000"
+  name: repo-cert-manager
+  namespace: argocd
+stringData:
+  name: cert-manager
+  project: argocd
+  type: helm
+  url: https://charts.jetstack.io
