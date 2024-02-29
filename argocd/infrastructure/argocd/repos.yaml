@@ -10,7 +10,6 @@ metadata:
   namespace: argocd
 stringData:
   name: Homelab
-  project: argocd
   type: git
   url: https://github.com/mocdaniel/homelab.git
 type: Opaque
