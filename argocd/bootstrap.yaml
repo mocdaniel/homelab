@@ -9,9 +9,11 @@ spec:
     name: in-cluster
     namespace: argocd
   project: default
-  sources:
-    - repoURL: https://github.com/mocdaniel/homelab.git
-      path: argocd/apps/infrastructure
+  source:
+    repoURL: https://github.com/mocdaniel/homelab.git
+    path: argocd/infrastructure
+    directory:
+      recurse: true
   syncPolicy:
     automated:
       selfHeal: true
