@@ -3,9 +3,9 @@
 .terraform/
 .env
 .DS_Store
-*.terraform*
 *.tfstate*
-talos/*.yaml
+talos/worker.yaml
+talos/controlplane.yaml
+talos/secrets.yaml
 talos/talosconfig
-!talos/general.yaml
 
