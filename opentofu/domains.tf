@@ -1,58 +1,27 @@
-resource "namecheap_domain_records" "bodkys-house" {
-  domain = "bodkys.house"
-  email_type = "NONE"
+locals {
+    entries = tomap({
+      portainer    = "185.11.255.12"
+      ghostfolio   = "185.11.255.65"
+      actual       = "185.11.255.65"
+      traefik      = "185.11.255.65"
+      prometheus   = "185.11.255.65"
+      alertmanager = "185.11.255.65"
+      umami        = "185.11.255.65"
+      wud          = "185.11.255.65"
 
-  record {
-    hostname = "portainer"
-    type = "A"
-    address = "185.11.255.12"
-  }
+    })
+}
+resource "civo_dns_domain_name" "bodkys_house" {
+  name = "bodkys.house"
+}
 
-  record {
-    hostname = "ghostfolio"
-    type = "A"
-    address = "185.11.255.65"
-  }
+resource "civo_dns_domain_record" "records" {
+    for_each = local.entries
 
-  record {
-    hostname = "actual"
-    type = "A"
-    address = "185.11.255.65"
-  }
-
-  record {
-    hostname = "traefik"
-    type = "A"
-    address = "185.11.255.65"
-  }
-
-  record {
-    hostname = "home"
-    type = "A"
-    address = "185.11.255.65"
-  }
-
-  record {
-    hostname = "prometheus"
-    type = "A"
-    address = "185.11.255.65"
-  }
-
-  record {
-    hostname = "alertmanager"
-    type = "A"
-    address = "185.11.255.65"
-  }
-
-  record {
-    hostname = "umami"
-    type = "A"
-    address = "185.11.255.65"
-  }
-
-  record {
-    hostname = "wud"
-    type = "A"
-    address = "185.11.255.65"
-  }
+    domain_id  = civo_dns_domain_name.bodkys_house.id
+    type       = "A"
+    name       = each.key
+    value      = each.value
+    ttl        = 600
+    depends_on = [civo_dns_domain_name.bodkys_house]
 }

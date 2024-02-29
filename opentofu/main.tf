@@ -1,11 +1,12 @@
 terraform {
   required_providers {
-    namecheap = {
-      source = "namecheap/namecheap"
-      version = "2.1.1"
+    civo = {
+      source = "civo/civo"
+      version = "1.0.39"
     }
   }
 }
 
-provider "namecheap" {
+provider "civo" {
+  region = "FRA1"
 }
