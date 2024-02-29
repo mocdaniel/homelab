@@ -56,3 +56,4 @@ spec:
     - argocd
   sourceRepos:
     - https://charts.jetstack.io
+    - ghcr.io/okteto

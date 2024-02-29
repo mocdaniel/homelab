@@ -1,0 +1,25 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager-webhook-civo
+  namespace: argocd
+  annotations:
+  argocd.argoproj.io/sync-wave: "-5"
+spec:
+  destination:
+    name: in-cluster
+    namespace: cert-manager
+  project: infrastructure
+  source:
+    chart: cert-manager-webhook-civo
+    repoURL: ghcr.io/okteto
+    targetRevision: 0.5.3
+    helm:
+      values: |
+        region: FRA1
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
