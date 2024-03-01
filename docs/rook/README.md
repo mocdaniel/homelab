@@ -31,7 +31,7 @@ are in place. Thus, the target namespace needs to be
 labeled accordingly:
 
 ```console
-kubectl label namespace rook-ceph pod-security-standards.kubernetes.io/enforce=privileged
+kubectl label namespace rook-ceph pod-security.kubernetes.io/enforce=privileged
 ```
 
 ## Cleaning up
@@ -58,10 +58,10 @@ Once the Rook operator knows about the planned deletion, the `CephCluster` and i
 
 ```console
 kubectl delete storageclasses ceph-block ceph-bucket ceph-filesystem
-kubectl --namespace rook-ceph delete cephblockbools ceph-blockpool
+kubectl --namespace rook-ceph delete cephblockpools ceph-blockpool
 kubectl --namespace rook-ceph delete cephobjectstore ceph-objectstore
-kubectl --namespace rook-ceph delete cephfilesystem ceph-filesystem
 kubectl --namespace rook-ceph delete cephfilesystemsubvolumegroup ceph-filesystem-csi
+kubectl --namespace rook-ceph delete cephfilesystem ceph-filesystem
 kubectl --namespace rook-ceph delete cephcluster rook-ceph
 helm --namespace rook-ceph uninstall rook-ceph-cluster
 ```
