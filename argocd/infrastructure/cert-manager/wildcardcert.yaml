@@ -2,13 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: staging-star-bodkys-house
+  name: bodkys-house-wildcard
   namespace: cert-manager
 spec:
   commonName: "*.bodkys.house"
   dnsNames:
     - "*.bodkys.house"
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt
     kind: ClusterIssuer
-  secretName: staging-star-bodkys-house
+  secretName: bodkys-house-wildcard
