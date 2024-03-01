@@ -17,6 +17,9 @@ spec:
     targetRevision: 0.5.3
     helm:
       values: |
+        image:
+          repository: dbodky/cert-manager-webhook-civo
+          tag: latest
         region: FRA1
   syncPolicy:
     automated:
