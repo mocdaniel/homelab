@@ -1,0 +1,22 @@
+---
+machine:
+  network:
+    hostname: turing-1
+    extraHostEntries:
+      - ip: 192.168.1.122
+        aliases:
+          - turing-2
+      - ip: 192.168.1.123
+        aliases:
+          - turing-3
+      - ip: 192.168.1.124
+        aliases:
+          - turing-4
+cluster:
+  apiServer:
+    admissionControl:
+      - name: PodSecurity
+        configuration:
+          exemptions:
+            namespaces:
+              - rook-ceph

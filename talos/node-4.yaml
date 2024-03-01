@@ -1,0 +1,14 @@
+---
+machine:
+  network:
+    hostname: turing-4
+    extraHostEntries:
+      - ip: 192.168.1.119
+        aliases:
+          - turing-1
+      - ip: 192.168.1.122
+        aliases:
+          - turing-2
+      - ip: 192.168.1.123
+        aliases:
+          - turing-3
