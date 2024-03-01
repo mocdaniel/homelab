@@ -4,8 +4,6 @@ kind: Secret
 metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1000"
   name: repo-homelab
   namespace: argocd
 stringData:
@@ -19,8 +17,6 @@ kind: Secret
 metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1000"
   name: repo-argo
   namespace: argocd
 stringData:
@@ -34,8 +30,6 @@ kind: Secret
 metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1000"
   name: repo-cert-manager
   namespace: argocd
 stringData:
@@ -49,8 +43,6 @@ kind: Secret
 metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1000"
   name: repo-cert-manager-webhook-civo
   namespace: argocd
 stringData:
@@ -59,3 +51,16 @@ stringData:
   type: helm
   url: ghcr.io/okteto
   enableOCI: "true"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: repo-external-secrets
+  namespace: argocd
+stringData:
+  name: external-secrets
+  project: argocd
+  type: helm
+  url: https://charts.external-secrets.io
