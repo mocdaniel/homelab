@@ -26,3 +26,5 @@ cgroup:
   autoMount:
     enabled: false
   hostRoot: /sys/fs/cgroup
+l2announcements:
+  enabled: true
