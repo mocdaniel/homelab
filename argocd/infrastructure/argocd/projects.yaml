@@ -52,6 +52,10 @@ spec:
     ignore:
       - kind: Secret
         name: cert-manager-webhook-ca
+      - kind: Secret
+        name: cert-manager-webhook-civo-ca
+      - kind: Secret
+        name: cert-manager-webhook-civo-webhook-tls
   sourceNamespaces:
     - argocd
   sourceRepos:
