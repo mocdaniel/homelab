@@ -1,0 +1,32 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: argocd
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1000"
+spec:
+  clusterResourceBlacklist:
+    - group: cilium.io
+      kind: CiliumEndpoint
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  description: ArgoCD project
+  destinations:
+    - namespace: argocd
+      server: https://kubernetes.default.svc
+  orphanedResources:
+    ignore:
+      - kind: Application
+        group: argoproj.io
+        name: bootstrap
+      - kind: AppProject
+        group: argoproj.io
+        name: default
+    warn: true
+  sourceNamespaces:
+    - argocd
+  sourceRepos:
+    - https://github.com/mocdaniel/homelab.git

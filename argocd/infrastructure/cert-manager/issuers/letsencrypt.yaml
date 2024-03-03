@@ -4,7 +4,7 @@ kind: ClusterIssuer
 metadata:
   name: letsencrypt
   annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "-35"
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory

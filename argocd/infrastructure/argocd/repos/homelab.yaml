@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1000"
+  name: repo-homelab
+  namespace: argocd
+stringData:
+  name: Homelab
+  type: git
+  url: https://github.com/mocdaniel/homelab.git
+type: Opaque

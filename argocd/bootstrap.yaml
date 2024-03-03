@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: bootstrap
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name: in-cluster

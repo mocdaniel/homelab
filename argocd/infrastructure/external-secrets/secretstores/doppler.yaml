@@ -4,7 +4,7 @@ kind: ClusterSecretStore
 metadata:
   name: doppler
   annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "-90"
 spec:
   provider:
     doppler:
