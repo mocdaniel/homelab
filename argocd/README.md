@@ -40,10 +40,16 @@ Bootstrap ArgoCD to manage itself:
 
 ```console
 kubectl apply -f bootstrap/argocd.yaml
+```
+
+Then, once the application is **in sync**, bootstrap all of the
+remaining infrastructure:
+
+```console
 kubectl apply -f bootstrap/bootstrap.yaml
 ```
 
-This will apply an `Application` CRD referencing the `bootstrap/argocd` and `infrastructure/`
+This will apply an `Application` CRD referencing the `infrastructure/`
 subdirectories of this repository, and deploy all needed applications in the right
 order.
 
@@ -53,8 +59,6 @@ a directory at `argocd/infrastructure/`:
 
 | Application | Sync Wave | Remarks |
 |-------------|-----------|---------|
-|argocd/repos|**-900**|All needed ArgoCD repositories|
-|argocd/projects|**-900**|All needed ArgoCD projects|
 |[external-secrets](https://external-secrets.io)|**-100**|Fetches secrets from [Doppler](https://doppler.com)|
 |external-secrets/secrets|**-90**|All needed secret references|
 |external-secrets/secretstores|**-90**|All needed secret stores|
