@@ -4,12 +4,10 @@ kind: Secret
 metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
-  annotations:
-    argocd.argoproj.io/sync-wave: "-900"
-  name: repo-cert-manager
+  name: repo-argo
   namespace: argocd
 stringData:
-  name: cert-manager
+  name: Argo
   project: argocd
   type: helm
-  url: https://charts.jetstack.io
+  url: https://argoproj.github.io/argo-helm

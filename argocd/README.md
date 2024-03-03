@@ -23,12 +23,13 @@ helm install --namespace argocd \
 Bootstrap ArgoCD to manage itself:
 
 ```console
-kubectl apply -f bootstrap.yaml
+kubectl apply -f bootstrap/argocd.yaml
+kubectl apply -f bootstrap/bootstrap.yaml
 ```
 
-This will apply an `Application` CRD referencing the `apps/`
-subdirectory of this repository, and establish an
-**App of Apps** pattern.
+This will apply an `Application` CRD referencing the `bootstrap/argocd` and `infrastructure/`
+subdirectories of this repository, and deploy all needed applications in the right
+order.
 
 A list of installed applications as well as their **installation
 order** can be found below. Each application name is mapped to
@@ -36,7 +37,6 @@ a directory at `argocd/infrastructure/`:
 
 | Application | Sync Wave | Remarks |
 |-------------|-----------|---------|
-|[argocd](https://argo-cd.readthedocs.io)|**-1000**|**GitOps** engine|
 |argocd/repos|**-900**|All needed ArgoCD repositories|
 |argocd/projects|**-900**|All needed ArgoCD projects|
 |[external-secrets](https://external-secrets.io)|**-100**|Fetches secrets from [Doppler](https://doppler.com)|

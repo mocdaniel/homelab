@@ -4,8 +4,6 @@ kind: Application
 metadata:
   name: argocd
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1000"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
