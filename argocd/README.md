@@ -18,6 +18,22 @@ helm install --namespace argocd \
   --version 6.4.1
 ```
 
+## Secrets
+
+Secrets are fetched from [Doppler](https://doppler.com) with [external-secrets](https://external-secrets.io).
+Before bootstrapping the cluster, a single secret holding the
+**service token** to the corresponding Doppler **project** needs
+to be created.
+
+Assuming the `doppler` CLI is configured properly, the secret can
+be created like this:
+
+```console
+doppler run --command='kubectl create secret -n kube-system \
+  generic doppler-auth-token \
+  --from-literal token=$SERVICE_TOKEN'
+```
+
 ## Bootstrapping the cluster
 
 Bootstrap ArgoCD to manage itself:
