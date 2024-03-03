@@ -4,6 +4,7 @@ k8sServicePort: 7445
 ipam:
   mode: kubernetes
 kubeProxyReplacement: true
+devices: enx+
 securityContext:
   capabilities:
     ciliumAgent:
@@ -27,4 +28,6 @@ cgroup:
     enabled: false
   hostRoot: /sys/fs/cgroup
 l2announcements:
+  enabled: true
+externalIPs:
   enabled: true
