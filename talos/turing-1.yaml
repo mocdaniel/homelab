@@ -1,0 +1,41 @@
+---
+machine:
+  kubelet:
+    extraArgs:
+      rotate-server-certificates: true
+  network:
+    hostname: turing-1
+    interfaces:
+      - interface: enx8e8dc297949f
+        dhcp: true
+        vip:
+          ip: 192.168.1.80
+    extraHostEntries:
+      - ip: 192.168.1.122
+        aliases:
+          - turing-2
+      - ip: 192.168.1.123
+        aliases:
+          - turing-3
+      - ip: 192.168.1.124
+        aliases:
+          - turing-4
+  install:
+    disk: /dev/mmcblk0
+cluster:
+  network:
+    cni:
+      name: none
+  apiServer:
+    admissionControl:
+      - name: PodSecurity
+        configuration:
+          exemptions:
+            namespaces:
+              - rook-ceph
+  proxy:
+    disabled: true
+  extraManifests:
+    - https://raw.githubusercontent.com/alex1989hu/kubelet-serving-cert-approver/release-0.8/deploy/standalone-install.yaml
+    - https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+  allowSchedulingOnControlPlanes: true

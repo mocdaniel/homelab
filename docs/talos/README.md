@@ -20,9 +20,9 @@ the configs **with** applied patches, using the saved
 
 ```console
 talosctl gen config --with-secrets secrets.yaml \
-  <cluster-name> <cluster-api-endpoint> \
-  --kubernetes-version <version>\
-  --config-patch @general.yaml
+  talos https://192.168.1.80:6443 \
+  --kubernetes-version 1.28.7 \
+  --force
 ```
 
 **Move** the generated `talosconfig` to the default location:
@@ -37,18 +37,24 @@ Applying the config for the first time can be done like this:
 
 ```console
 talosctl apply-config --insecure \
-  --nodes <control-plane-node> \
-  --file controlplane.yaml \
-  -p @node-1.yaml
-```
+  -n 192.168.1.121 \
+  -f controlplane.yaml \
+  -p @turing-1.yaml
 
-For `worker` nodes, respectively:
-
-```console
 talosctl apply-config --insecure \
-  --nodes <worker-node-x> \
-  --file worker.yaml \
-  -p @node-x.yaml
+  -n 192.168.1.122 \
+  -f controlplane.yaml \
+  -p @turing-2.yaml
+
+talosctl apply-config --insecure \
+  -n 192.168.1.123 \
+  -f controlplane.yaml \
+  -p @turing-3.yaml
+
+talosctl apply-config --insecure \
+  -n 192.168.1.124 \
+  -f worker.yaml \
+  -p @turing-4.yaml
 ```
 
 ### Update Configuration
@@ -58,7 +64,7 @@ If the configuration needs to be updated, go about it like this:
 ```console
 # Stage configuration changes
 talosctl apply-config -m stage \
-  -e <cluster-api-endpoint> \
+  -e 192.168.1.121 \
   -n <node> \
   -f <config-file>
 
@@ -67,7 +73,7 @@ kubectl cordon <node>
 kubectl drain <node> --ignore-daemonsets --delete-emptydir-data
 
 # Reboot node
-talosctl reboot -e <cluster-api-endpoint> \
+talosctl reboot -e 192.168.1.121 \
   -n <node>
 
 # Uncordon node
@@ -85,7 +91,8 @@ kubectl wait --timeout=1800s \
 Nodes can get resetted with the following command:
 
 ```console
-talosctl reset -n <node> -e <control-plane-endpoint> \
+talosctl reset -n <node> \
+  -e 192.168.1.121 \
   --system-labels-to-wipe STATE \
   --system-labels-to-wipe EPHEMERAL \
   --graceful=true \
@@ -103,16 +110,16 @@ Bootstrap the Kubernetes cluster with the following command:
 
 ```console
 talosctl bootstrap \
-  --nodes <control-plane-node> \
-  --endpoints <control-plane-node>
+  -n 192.168.1.121 \
+  -e 192.168.1.121
 ```
 
 Export the kubeconfig:
 
 ```console
 talosctl kubeconfig \
-  --nodes <control-plane-node> \
-  --endpoints <control-plane-node>
+  -n 192.168.1.121 \
+  -e 192.168.1.121
 ```
 
 **It may take a few minutes** until the cluster is fully bootstrapped.

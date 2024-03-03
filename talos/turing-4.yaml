@@ -1,9 +1,15 @@
 ---
 machine:
+  kubelet:
+    extraArgs:
+      rotate-server-certificates: true
   network:
     hostname: turing-4
+    interfaces:
+      - interface: enx0294218d8fcc
+        dhcp: true
     extraHostEntries:
-      - ip: 192.168.1.119
+      - ip: 192.168.1.121
         aliases:
           - turing-1
       - ip: 192.168.1.122
@@ -12,3 +18,5 @@ machine:
       - ip: 192.168.1.123
         aliases:
           - turing-3
+  install:
+    disk: /dev/mmcblk0
