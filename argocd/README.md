@@ -36,9 +36,9 @@ a directory at `argocd/infrastructure/`:
 
 | Application | Sync Wave | Remarks |
 |-------------|-----------|---------|
-|argocd/projects|**-1000**|All needed ArgoCD projects|
-|argocd/repos|**-1000**|All needed ArgoCD repositories|
-
+|[argocd](https://argo-cd.readthedocs.io)|**-1000**|**GitOps** engine|
+|argocd/repos|**-900**|All needed ArgoCD repositories|
+|argocd/projects|**-900**|All needed ArgoCD projects|
 |[external-secrets](https://external-secrets.io)|**-100**|Fetches secrets from [Doppler](https://doppler.com)|
 |external-secrets/secrets|**-90**|All needed secret references|
 |external-secrets/secretstores|**-90**|All needed secret stores|
@@ -48,4 +48,3 @@ a directory at `argocd/infrastructure/`:
 |cert-manager/issuers|**-35**|All needed issuers|
 |[external-dns](https://kubernetes-sigs.github.io/external-dns/v0.14.0/)|**-30**|Creates **DNS entries** for applications|
 |[trœfik](https://traefik.io)|**-20**|**Ingress controller** for applications|
-|[argocd](https://argo-cd.readthedocs.io)|**-10**|**GitOps** Engine|

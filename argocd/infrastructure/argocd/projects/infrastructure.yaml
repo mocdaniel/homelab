@@ -5,7 +5,7 @@ metadata:
   name: infrastructure
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "-1000"
+    argocd.argoproj.io/sync-wave: "-900"
 spec:
   clusterResourceBlacklist:
     - group: cilium.io
