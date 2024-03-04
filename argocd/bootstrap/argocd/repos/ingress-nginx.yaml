@@ -4,10 +4,10 @@ kind: Secret
 metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
-  name: repo-traefik
+  name: repo-ingress-nginx
   namespace: argocd
 stringData:
-  name: traefik
+  name: ingress-nginx
   project: infrastructure
   type: helm
-  url: https://traefik.github.io/charts
+  url: https://kubernetes.github.io/ingress-nginx

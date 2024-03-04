@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: bodkys-house-wildcard
-  namespace: traefik
+  namespace: ingress-nginx
   annotations:
     argocd.argoproj.io/sync-wave: "-20"
 spec:

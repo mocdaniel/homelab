@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: traefik
+  name: ingress-nginx
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "-20"
@@ -11,18 +11,20 @@ metadata:
 spec:
   destination:
     name: in-cluster
-    namespace: traefik
+    namespace: ingress-nginx
   project: infrastructure
   source:
     chart: traefik
-    repoURL: https://traefik.github.io/charts
-    targetRevision: 26.1.0
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    targetRevision: 4.10.0
     helm:
       values: |
-        tlsStore:
-          default:
-            defaultCertificate:
-              secretName: bodkys-house-wildcard
+        controller:
+          ingressClassResource:
+            default: true
+          extraArgs:
+            enable-ssl-passthrough: "true"
+            default-ssl-certificate: "ingress-nginx/bodkys-house-wildcard"
   syncPolicy:
     automated:
       selfHeal: true

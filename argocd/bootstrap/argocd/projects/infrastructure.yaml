@@ -23,7 +23,7 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: external-dns
       server: https://kubernetes.default.svc
-    - namespace: traefik
+    - namespace: ingress-nginx
       server: https://kubernetes.default.svc
   orphanedResources:
     warn: true
@@ -42,4 +42,4 @@ spec:
     - https://charts.external-secrets.io
     - https://charts.rook.io/release
     - https://kubernetes-sigs.github.io/external-dns
-    - https://traefik.github.io/charts
+    - https://kubernetes.github.io/ingress-nginx
