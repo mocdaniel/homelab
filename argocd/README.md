@@ -68,3 +68,5 @@ a directory at `argocd/infrastructure/`:
 |cert-manager/issuers|**-35**|All needed issuers|
 |[external-dns](https://kubernetes-sigs.github.io/external-dns/v0.14.0/)|**-30**|Creates **DNS entries** for applications|
 |[trœfik](https://traefik.io)|**-20**|**Ingress controller** for applications|
+|[rook](https://rook.io)|**-10**|[Ceph](https://ceph.com) controller|
+|rook/cephclusters|**-5**|ceph cluster(s)|

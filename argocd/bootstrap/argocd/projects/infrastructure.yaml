@@ -19,6 +19,8 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: external-secrets
       server: https://kubernetes.default.svc
+    - namespace: rook-ceph
+      server: https://kubernetes.default.svc
   orphanedResources:
     warn: true
     ignore:
@@ -34,3 +36,4 @@ spec:
     - https://charts.jetstack.io
     - ghcr.io/okteto
     - https://charts.external-secrets.io
+    - https://charts.rook.io/release
