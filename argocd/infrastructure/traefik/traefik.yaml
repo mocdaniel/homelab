@@ -1,0 +1,30 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-20"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    name: in-cluster
+    namespace: traefik
+  project: infrastructure
+  source:
+    chart: traefik
+    repoURL: https://traefik.github.io/charts
+    targetRevision: 26.1.0
+    helm:
+      values: |
+        tlsStore:
+          default:
+            defaultCertificate:
+              secretName: bodkys-house-wildcard
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -3,9 +3,9 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: bodkys-house-wildcard
-  namespace: cert-manager
+  namespace: traefik
   annotations:
-    argocd.argoproj.io/sync-wave: "-35"
+    argocd.argoproj.io/sync-wave: "-20"
 spec:
   commonName: "*.bodkys.house"
   dnsNames:
