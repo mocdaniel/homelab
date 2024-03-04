@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: argocd-server-tls
+  name: argocd-bodkys-house
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "-30"
@@ -13,4 +13,4 @@ spec:
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
-  secretName: bodkys-house-wildcard
+  secretName: argocd-server-tls
