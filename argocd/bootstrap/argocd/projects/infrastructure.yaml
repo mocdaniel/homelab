@@ -21,6 +21,8 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: rook-ceph
       server: https://kubernetes.default.svc
+    - namespace: external-dns
+      server: https://kubernetes.default.svc
   orphanedResources:
     warn: true
     ignore:
@@ -37,3 +39,4 @@ spec:
     - ghcr.io/okteto
     - https://charts.external-secrets.io
     - https://charts.rook.io/release
+    - https://kubernetes-sigs.github.io/external-dns
