@@ -32,6 +32,8 @@ spec:
                 end
               end
               return hs
+          secret:
+            argocdServerAdminPassword: "$2a$10$5CsSK3647KGsYW1u12XanuzjKT32wvLLomcaNsQYuH14or4BiLmy6"
         global:
           domain: argocd.bodkys.house
         server:
