@@ -24,6 +24,12 @@ spec:
           dashboard:
             enabled: true
             ssl: false
+          mgr:
+            modules:
+              - name: rook
+                enabled: true
+              - name: pg_autoscaler
+                enabled: true
         ingress:
           dashboard:
             host:
