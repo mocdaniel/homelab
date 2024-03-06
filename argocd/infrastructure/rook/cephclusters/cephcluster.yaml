@@ -17,6 +17,18 @@ spec:
     chart: rook-ceph-cluster
     repoURL: https://charts.rook.io/release
     targetRevision: v1.13.5
+    helm:
+      values: |
+        operatorNamespace: rook-ceph
+        cephClusterSpec:
+          dashboard:
+            enabled: true
+            ssl: false
+        ingress:
+          dashboard:
+            host:
+              name: ceph.bodkys.house
+              path: "/"
   syncPolicy:
     automated:
       selfHeal: true
