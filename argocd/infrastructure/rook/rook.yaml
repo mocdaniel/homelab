@@ -17,6 +17,9 @@ spec:
     chart: rook-ceph
     repoURL: https://charts.rook.io/release
     targetRevision: v1.13.5
+    helm:
+      values: |
+        enableDiscoveryDaemon: true
   syncPolicy:
     automated:
       selfHeal: true
