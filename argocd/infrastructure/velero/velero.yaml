@@ -34,19 +34,19 @@ spec:
                 name: plugins
         configuration:
           backupStorageLocation:
-            - name: rook
+            - name: civo
               provider: velero.io/aws
-              bucket: velero-backup
+              bucket: velero
               default: true
               config:
-                region: "ceph"
+                region: "civo"
                 s3ForcePathStyle: "true"
-                s3Url: https://s3.bodkys.house
-          defaultBackupStorageLocation: rook
+                s3Url: https://objectstore.fra1.civo.com
+          defaultBackupStorageLocation: civo
           features: EnableCSI
         credentials:
           useSecret: false
-          extraSecretRef: velero-backup
+          extraSecretRef: civo-s3-credentials
         snapshotsEnabled: false
   syncPolicy:
     automated:
