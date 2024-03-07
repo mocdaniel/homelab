@@ -17,6 +17,19 @@ spec:
     chart: velero
     repoURL: https://vmware-tanzu.github.io/helm-charts
     targetRevision: 6.0.0
+    helm:
+      values: |
+        configuration:
+          backupStorageLocation:
+            - name: rook
+              provider: velero.io/aws
+              bucket: velero-backup
+              default: true
+              config:
+                s3ForcePathStyle: "true"
+                s3Url: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc
+        credentials:
+          existingSecret: velero-backup
   syncPolicy:
     automated:
       selfHeal: true

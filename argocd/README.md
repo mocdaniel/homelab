@@ -73,4 +73,3 @@ a directory at `argocd/infrastructure/`:
 |rook/cephclusters|**-5**|ceph cluster(s)|
 |[velero](https://velero.io)|**-3**|Automated backup solution|
 |velero/bucket|**-2**|backup storage definitions|
-

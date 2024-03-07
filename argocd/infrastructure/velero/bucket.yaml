@@ -9,7 +9,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  generateBucketName: velero-backup
+  bucketName: velero-backup
   storageClassName: ceph-bucket
   additionalConfig:
     maxObjects: "10000"
