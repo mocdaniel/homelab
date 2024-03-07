@@ -28,6 +28,7 @@ spec:
               config:
                 s3ForcePathStyle: "true"
                 s3Url: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc
+          defaultBackupStorageLocation: rook
         credentials:
           existingSecret: velero-backup
   syncPolicy:
