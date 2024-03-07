@@ -38,6 +38,7 @@ spec:
           defaultBackupStorageLocation: rook
         credentials:
           existingSecret: velero-backup
+        snapshotsEnabled: false
   syncPolicy:
     automated:
       selfHeal: true
