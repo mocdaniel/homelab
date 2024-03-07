@@ -1,0 +1,16 @@
+---
+apiVersion: objectbucket.io/v1alpha1
+kind: ObjectBucketClaim
+metadata:
+  name: velero-backup
+  namespace: velero
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  generateBucketName: velero-backup
+  storageClassName: ceph-bucket
+  additionalConfig:
+    maxObjects: "10000"
+    maxSize: "20G"

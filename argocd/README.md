@@ -71,3 +71,6 @@ a directory at `argocd/infrastructure/`:
 |[ingress-nginx](https://kubernetes.github.io/ingress-nginx)|**-20**|**Ingress controller** for applications|
 |[rook](https://rook.io)|**-10**|[Ceph](https://ceph.com) controller|
 |rook/cephclusters|**-5**|ceph cluster(s)|
+|[velero](https://velero.io)|**-3**|Automated backup solution|
+|velero/bucket|**-2**|backup storage definitions|
+
