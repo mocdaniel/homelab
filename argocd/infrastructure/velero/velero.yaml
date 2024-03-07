@@ -41,7 +41,7 @@ spec:
               config:
                 region: "ceph"
                 s3ForcePathStyle: "true"
-                s3Url: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc
+                s3Url: https://s3.bodkys.house
           defaultBackupStorageLocation: rook
           features: EnableCSI
         credentials:
