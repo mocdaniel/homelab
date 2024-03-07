@@ -8,6 +8,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-2"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+    - objectbucket.io/finalizer
 spec:
   bucketName: velero-backup
   storageClassName: ceph-bucket

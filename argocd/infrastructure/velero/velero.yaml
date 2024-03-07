@@ -33,14 +33,17 @@ spec:
               bucket: velero-backup
               default: true
               config:
+                region: "ceph"
                 s3ForcePathStyle: "true"
                 s3Url: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc
           defaultBackupStorageLocation: rook
         credentials:
-          existingSecret: velero-backup
+          useSecret: false
+          extraSecretRef: velero-backup
         snapshotsEnabled: false
   syncPolicy:
     automated:
       selfHeal: true
+      prune: true
     syncOptions:
       - CreateNamespace=true
