@@ -17,6 +17,8 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: argocd
       server: https://kubernetes.default.svc
+    - namespace: actual
+      server: https://kubernetes.default.svc
   orphanedResources:
     warn: true
   sourceNamespaces:

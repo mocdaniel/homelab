@@ -1,0 +1,25 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: actual
+  labels:
+    app.kubernetes.io/name: actual
+  annotations:
+    gethomepage.dev/description: Budgeting made easy
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Finances
+    gethomepage.dev/icon: actual.png
+    gethomepage.dev/name: Actual
+spec:
+  rules:
+    - host: "actual.bodkys.house"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: actual
+                port:
+                  name: http

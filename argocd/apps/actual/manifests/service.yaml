@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: homepage
+  name: actual
   labels:
-    app.kubernetes.io/name: homepage
+    app.kubernetes.io/name: actual
 spec:
   type: ClusterIP
   ports:
-    - port: 3000
+    - port: 5006
       targetPort: http
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: homepage
+    app.kubernetes.io/name: actual
