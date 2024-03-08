@@ -27,11 +27,6 @@ data:
     useEqualHeights: true
   services.yaml: |
     - Finances:
-        - Actual Budget:
-            href: https://actual.bodkys.house/
-            siteMonitor: https://actual.bodkys.house/
-            description: Budgeting made easy
-            icon: actual
         - Ghostfolio:
             href: https://ghostfolio.bodkys.house/
             siteMonitor: https://ghostfolio.bodkys.house
