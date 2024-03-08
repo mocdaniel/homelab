@@ -1,0 +1,88 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage
+  labels:
+    app.kubernetes.io/name: homepage
+data:
+  kubernetes.yaml: |
+    mode: cluster
+  settings.yaml: |
+    title: My dashboard
+    background:
+      image: https://images.unsplash.com/photo-1513407030348-c983a97b98d8?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      blur: sm
+      opacity: 50
+    cardBlur: md
+    statusStyle: dot
+    layout:
+      Infrastructure:
+        style: row
+        columns: 4
+      Finances:
+        style: col
+      Website:
+        style: col
+    useEqualHeights: true
+  services.yaml: |
+    - Finances:
+        - Actual Budget:
+            href: https://actual.bodkys.house/
+            siteMonitor: https://actual.bodkys.house/
+            description: Budgeting made easy
+            icon: actual
+        - Ghostfolio:
+            href: https://ghostfolio.bodkys.house/
+            siteMonitor: https://ghostfolio.bodkys.house
+            description: One app to track them all
+            icon: ghostfolio
+            widget:
+              type: ghostfolio
+              url: https://ghostfolio.bodkys.house
+              key: "{{HOMEPAGE_VAR_GHOSTFOLIO_TOKEN}}"
+    - Website:
+        - Blog:
+            href: https://dbodky.me/
+            siteMonitor: https://dbodky.me/
+            description: My personal blog
+            icon: hugo
+        - Umami:
+            href: https://umami.bodkys.house/
+            siteMonitor: https://umami.bodkys.house/
+            description: My personal analytics
+            icon: umami
+  widgets.yaml: |
+    - kubernetes:
+        cluster:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+          label: "Talos"
+        nodes:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+    - resources:
+        backend: resources
+        expanded: true
+        cpu: true
+        memory: true
+    - openmeteo:
+        label: Erlangen
+        latitude: 49.583332
+        longitude: 11.016667
+        timezone: Europe/Berlin
+        units: metric
+        cache: 5
+    - search:
+        provider: google
+        focus: true
+    - datetime:
+        text_size: xl
+        format:
+          dateStyle: long
+          timeStyle: long
+        locale: de

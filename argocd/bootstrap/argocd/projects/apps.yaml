@@ -1,0 +1,25 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: apps
+  namespace: argocd
+spec:
+  clusterResourceBlacklist:
+    - group: cilium.io
+      kind: CiliumEndpoint
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  description: Applications
+  destinations:
+    - namespace: homepage
+      server: https://kubernetes.default.svc
+    - namespace: argocd
+      server: https://kubernetes.default.svc
+  orphanedResources:
+    warn: true
+  sourceNamespaces:
+    - argocd
+  sourceRepos:
+    - https://github.com/mocdaniel/homelab.git
