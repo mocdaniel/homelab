@@ -16,12 +16,12 @@ spec:
   source:
     chart: cert-manager-webhook-civo
     repoURL: ghcr.io/okteto
-    targetRevision: 0.5.3
+    targetRevision: 0.5.4
     helm:
       values: |
         image:
-          repository: dbodky/cert-manager-webhook-civo
-          tag: latest
+          repository: okteto/civo-webhook
+          tag: 0.5.4
         region: FRA1
   syncPolicy:
     automated:
