@@ -8,7 +8,6 @@ locals {
       alertmanager = "185.11.255.65"
       umami        = "185.11.255.65"
       wud          = "185.11.255.65"
-      home         = "185.11.255.65"
     })
 }
 resource "civo_dns_domain_name" "bodkys_house" {
