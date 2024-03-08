@@ -11,6 +11,7 @@ metadata:
     gethomepage.dev/group: Finances
     gethomepage.dev/icon: actual.png
     gethomepage.dev/name: Actual
+    nginx.ingress.kubernetes.io/proxy-body-size: "4096m"
 spec:
   rules:
     - host: "actual.bodkys.house"
