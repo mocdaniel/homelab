@@ -43,6 +43,12 @@ spec:
             annotations:
               nginx.ingress.kubernetes.io/force-ssl: "true"
               nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+              gethomepage.dev/description: GitOps for Kubernetes
+              gethomepage.dev/enabled: "true"
+              gethomepage.dev/group: Cluster Management
+              gethomepage.dev/icon: argocd.png
+              gethomepage.dev/name: ArgoCD
+
   syncPolicy:
     automated:
       selfHeal: true

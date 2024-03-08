@@ -32,6 +32,16 @@ spec:
                 enabled: true
         ingress:
           dashboard:
+            annotations:
+              gethomepage.dev/description: Distributed Storage System
+              gethomepage.dev/enabled: "true"
+              gethomepage.dev/group: Cluster Management
+              gethomepage.dev/icon: ceph.png
+              gethomepage.dev/name: Ceph
+              gethomepage.dev/pod-selector: >-
+                app=rook-ceph-mgr,
+                mgr_role=active,
+                rook_cluster=rook-ceph
             host:
               name: ceph.bodkys.house
               path: "/"
