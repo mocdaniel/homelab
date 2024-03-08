@@ -27,6 +27,8 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: velero
       server: https://kubernetes.default.svc
+    - namespace: postgres
+      server: https://kubernetes.default.svc
   orphanedResources:
     warn: true
     ignore:
@@ -46,3 +48,5 @@ spec:
     - https://kubernetes-sigs.github.io/external-dns
     - https://kubernetes.github.io/ingress-nginx
     - https://vmware-tanzu.github.io/helm-charts
+    - https://opensource.zalando.com/postgres-operator/charts/postgres-operator
+    - https://opensource.zalando.com/postgres-operator/charts/postgres-operator-ui
