@@ -4,6 +4,8 @@ kind: Schedule
 metadata:
   name: k8s-backup
   namespace: velero
+  annotations:
+  argocd.argoproj.io/sync-wave: "3" # sync third
 spec:
   schedule: 0 1 * * *
   template:
