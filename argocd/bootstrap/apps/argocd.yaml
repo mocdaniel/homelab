@@ -13,7 +13,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: argocd/bootstrap/argocd
+    path: argocd/bootstrap/manifests/argocd
     directory:
       recurse: true
   syncPolicy:
