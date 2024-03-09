@@ -13,9 +13,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: argocd/infrastructure
-    directory:
-      recurse: true
+    path: argocd/infrastructure/apps
   syncPolicy:
     automated:
       selfHeal: true
