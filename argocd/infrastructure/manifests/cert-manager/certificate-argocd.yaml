@@ -5,7 +5,7 @@ metadata:
   name: argocd-bodkys-house
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "-30"
+    argocd.argoproj.io/sync-wave: "3" # sync third
 spec:
   commonName: "argocd.bodkys.house"
   dnsNames:

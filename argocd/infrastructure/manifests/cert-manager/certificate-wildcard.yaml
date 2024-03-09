@@ -5,7 +5,7 @@ metadata:
   name: bodkys-house-wildcard
   namespace: ingress-nginx
   annotations:
-    argocd.argoproj.io/sync-wave: "-20"
+    argocd.argoproj.io/sync-wave: "3" # sync third
 spec:
   commonName: "*.bodkys.house"
   dnsNames:
