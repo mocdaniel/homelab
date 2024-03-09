@@ -61,7 +61,6 @@ order** can be found below.
 |[external-secrets](https://external-secrets.io)|**1**|Fetches secrets from [Doppler](https://doppler.com)|
 |[rook](https://rook.io)|**1**|[Ceph](https://ceph.com) controller|
 |[cnpg](https://cloudnative-pg.io)|**1**|A PostgreSQL operator|
-|PostgreSQL Clusters|**2**|PostgreSQL cluster(s) managed by cnpg|
 |[cert-manager](https://cert-manager.io)|**2**|Provides certificates for applications|
 |[cert-manager-webhook-civo](https://github.com/okteto/cert-manager-webhook-civo)|**2**|Uses [Civo](https://civo.com) for solving **DNS-01 challenges**|
 |[external-dns](https://kubernetes-sigs.github.io/external-dns/v0.14.0/)|**2**|Creates **DNS entries** for applications|
