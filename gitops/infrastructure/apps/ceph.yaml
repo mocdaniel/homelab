@@ -45,6 +45,53 @@ spec:
             host:
               name: ceph.bodkys.house
               path: "/"
+        cephBlockPools:
+          - name: ceph-blockpool
+            spec:
+              failureDomain: host
+              replicated:
+                size: 3
+            storageClass:
+              enabled: true
+              name: ceph-block
+              isDefault: true
+              reclaimPolicy: Delete
+              allowVolumeExpansion: true
+              volumeBindingMode: "Immediate"
+              mountOptions: []
+              allowedTopologies: []
+              parameters:
+                imageFormat: "2"
+                imageFeatures: layering
+                csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+                csi.storage.k8s.io/provisioner-secret-namespace: "{{ .Release.Namespace }}"
+                csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+                csi.storage.k8s.io/controller-expand-secret-namespace: "{{ .Release.Namespace }}"
+                csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+                csi.storage.k8s.io/node-stage-secret-namespace: "{{ .Release.Namespace }}"
+                csi.storage.k8s.io/fstype: ext4
+          - name: ceph-blockpool-postgres
+            spec:
+              failureDomain: host
+              replicated:
+                size: 1
+            storageClass:
+              enabled: true
+              name: ceph-block-postgres
+              isDefault: false
+              reclaimPolicy: Delete
+              allowVolumeExpansion: true
+              volumeBindingMode: "Immediate"
+              mountOptions: []
+              allowedTopologies: []
+              parameters:
+                csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+                csi.storage.k8s.io/provisioner-secret-namespace: "{{ .Release.Namespace }}"
+                csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+                csi.storage.k8s.io/controller-expand-secret-namespace: "{{ .Release.Namespace }}"
+                csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+                csi.storage.k8s.io/node-stage-secret-namespace: "{{ .Release.Namespace }}"
+                csi.storage.k8s.io/fstype: ext4
   syncPolicy:
     automated:
       selfHeal: true
