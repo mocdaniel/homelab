@@ -29,6 +29,8 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: cnpg-system
       server: https://kubernetes.default.svc
+    - namespace: argocd
+      server: https://kubernetes.default.svc
   orphanedResources:
     warn: true
     ignore:
@@ -49,3 +51,4 @@ spec:
     - https://kubernetes.github.io/ingress-nginx
     - https://vmware-tanzu.github.io/helm-charts
     - https://cloudnative-pg.github.io/charts
+    - https://github.com/mocdaniel/homelab.git
