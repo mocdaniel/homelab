@@ -13,7 +13,7 @@ spec:
   project: apps
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: gitops/apps/
+    path: gitops/workloads/apps
   syncPolicy:
     automated:
       selfHeal: true
