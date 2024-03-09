@@ -2,18 +2,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: actual
+  name: cert-manager
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "2" # sync second
 spec:
   destination:
     name: in-cluster
-    namespace: actual
-  project: apps
+    namespace: argocd
+  project: infrastructure
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: argocd/apps/actual/manifests
+    path: gitops/infrastructure/manifests/cert-manager
+    directory:
+      recurse: true
   syncPolicy:
     automated:
       selfHeal: true

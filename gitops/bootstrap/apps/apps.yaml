@@ -2,22 +2,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-secrets
+  name: apps
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  annotations:
-    argocd.argoproj.io/sync-wave: "1" # sync first
 spec:
   destination:
     name: in-cluster
     namespace: argocd
-  project: infrastructure
+  project: apps
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: argocd/infrastructure/manifests/external-secrets
-    directory:
-      recurse: true
+    path: gitops/apps/
   syncPolicy:
     automated:
       selfHeal: true

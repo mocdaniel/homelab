@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apps
+  name: argocd-bootstrap
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -10,10 +10,12 @@ spec:
   destination:
     name: in-cluster
     namespace: argocd
-  project: apps
+  project: default
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: argocd/apps/
+    path: gitops/bootstrap/manifests/argocd
+    directory:
+      recurse: true
   syncPolicy:
     automated:
       selfHeal: true

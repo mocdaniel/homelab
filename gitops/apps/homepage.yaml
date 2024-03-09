@@ -2,22 +2,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-dns
+  name: homepage
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  annotations:
-    argocd.argoproj.io/sync-wave: "2" # sync second
 spec:
   destination:
     name: in-cluster
-    namespace: argocd
-  project: infrastructure
+    namespace: homepage
+  project: apps
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: argocd/infrastructure/manifests/external-dns
-    directory:
-      recurse: true
+    path: gitops/apps/homepage/manifests
   syncPolicy:
     automated:
       selfHeal: true

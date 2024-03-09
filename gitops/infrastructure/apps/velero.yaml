@@ -2,18 +2,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-bootstrap
+  name: velero
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "2" # sync second
 spec:
   destination:
     name: in-cluster
     namespace: argocd
-  project: default
+  project: infrastructure
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: argocd/bootstrap/manifests/argocd
+    path: gitops/infrastructure/manifests/velero
     directory:
       recurse: true
   syncPolicy:

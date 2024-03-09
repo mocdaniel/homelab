@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: external-dns
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -15,7 +15,7 @@ spec:
   project: infrastructure
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: argocd/infrastructure/manifests/cert-manager
+    path: gitops/infrastructure/manifests/external-dns
     directory:
       recurse: true
   syncPolicy:
