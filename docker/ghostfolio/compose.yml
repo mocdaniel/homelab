@@ -9,7 +9,7 @@ services:
       - "traefik.http.routers.ghostfolio.tls=true"
       - "traefik.http.routers.ghostfolio.tls.certresolver=letsencrypt"
       - wud.tag.include=^\d+\.\d+\.\d+$$
-    image: ghostfolio/ghostfolio:2.63.1
+    image: ghostfolio/ghostfolio:2.63.2
     container_name: ghostfolio
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/ghostfolio?connect_timeout=300&sslmode=prefer
