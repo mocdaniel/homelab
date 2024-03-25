@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/name: ghostfolio-redis
 spec:
   selector:
-    app.kubernetes.io: ghostfolio-redis
+    app.kubernetes.io/name: ghostfolio-redis
   ports:
     - protocol: TCP
       port: 6379
