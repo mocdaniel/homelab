@@ -38,19 +38,19 @@ spec:
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
-                  name: cnpg-cluster-ghostfolio-app
+                  name: ghostfolio-credentials
                   key: uri
             - name: NODE_ENV
               value: production
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: cnpg-cluster-ghostfolio-app
-                  key: user
+                  name: ghostfolio-credentials
+                  key: username
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: cnpg-cluster-ghostfolio-app
+                  name: ghostfolio-credentials
                   key: password
             - name: REDIS_HOST
               value: ghostfolio-redis-0
