@@ -53,7 +53,7 @@ spec:
                   name: ghostfolio-credentials
                   key: password
             - name: REDIS_HOST
-              value: ghostfolio-redis-0
+              value: ghostfolio-redis
             - name: ACCESS_TOKEN_SALT
               valueFrom:
                 secretKeyRef:

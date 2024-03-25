@@ -1,6 +1,6 @@
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: ghostfolio-redis
   labels:
@@ -8,7 +8,6 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2" # sync second
 spec:
-  serviceName: ghostfolio-redis
   replicas: 1
   selector:
     matchLabels:
@@ -41,5 +40,5 @@ spec:
               command:
                 - redis-cli
                 - ping
-            initialDelaySeconds: 5
-            periodSeconds: 10
+            initialDelaySeconds: 30
+            periodSeconds: 30
