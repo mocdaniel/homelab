@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: ghostfolio
   annotations:
-    argocd.argoproj.io/sync-wave: "2" # sync second
+    argocd.argoproj.io/sync-wave: "3" # sync third
 spec:
   revisionHistoryLimit: 3
   replicas: 1
@@ -22,9 +22,45 @@ spec:
     spec:
       containers:
         - name: ghostfolio
-          image: "ghcr.io/gethomepage/homepage:v0.8.8"
+          image: ghostfolio/ghostfolio:2.66.3
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: 3333
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 3333
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          envs:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: cnpg-cluster-ghostfolio-app
+                  key: uri
+            - name: NODE_ENV
+              value: production
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: cnpg-cluster-ghostfolio-app
+                  key: user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: cnpg-cluster-ghostfolio-app
+                  key: password
+            - name: REDIS_HOST
+              value: ghostfolio-redis-0
+            - name: ACCESS_TOKEN_SALT
+              valueFrom:
+                secretKeyRef:
+                  name: ghostfolio-secrets
+                  key: access-token-salt
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ghostfolio-secrets
+                  key: jwt-secret-key

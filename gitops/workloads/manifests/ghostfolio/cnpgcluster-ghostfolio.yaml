@@ -4,8 +4,14 @@ kind: Cluster
 metadata:
   name: cnpg-cluster-ghostfolio
   annotations:
-    argocd.argoproj.io/sync-wave: "1" # sync first
+    argocd.argoproj.io/sync-wave: "2" # sync first
 spec:
+  bootstrap:
+    initdb:
+      database: ghostfolio
+      owner: ghostfolio
+      secret:
+        name: ghostfolio-credentials
   storage:
     size: 8Gi
     storageClass: ceph-block-postgres
