@@ -1,7 +1,6 @@
 locals {
     entries = tomap({
       portainer    = "185.11.255.12"
-      ghostfolio   = "185.11.255.65"
       traefik      = "185.11.255.65"
       prometheus   = "185.11.255.65"
       alertmanager = "185.11.255.65"
