@@ -1,0 +1,25 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ghostfolio
+  labels:
+    app.kubernetes.io/name: ghostfolio
+  annotations:
+    gethomepage.dev/description: One app to track them all
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Finances
+    gethomepage.dev/icon: ghostfolio.png
+    gethomepage.dev/name: Ghostfolio
+spec:
+  rules:
+    - host: "ghostfolio.bodkys.house"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: ghostfolio
+                port:
+                  name: http
