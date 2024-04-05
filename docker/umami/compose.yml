@@ -10,7 +10,7 @@ services:
       - "traefik.http.routers.umami.tls=true"
       - "traefik.http.routers.umami.tls.certresolver=letsencrypt"
       - wud.tag.include=^postgresql-v\d+\.\d+\.\d+$$
-    image: ghcr.io/umami-software/umami:postgresql-v2.10.1
+    image: ghcr.io/umami-software/umami:postgresql-v2.11.0
     environment:
       DATABASE_URL: postgresql://umami:${POSTGRES_PASSWORD}@umami_postgres:5432/umami
       DATABASE_TYPE: postgresql
