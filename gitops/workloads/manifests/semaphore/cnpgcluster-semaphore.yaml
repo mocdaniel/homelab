@@ -1,0 +1,15 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cnpg-cluster-semaphore
+  annotations:
+    argocd.argoproj.io/sync-wave: "2" # sync second
+spec:
+  bootstrap:
+    initdb:
+      database: semaphore
+      owner: semaphore
+  storage:
+    size: 8Gi
+    storageClass: ceph-block-postgres
