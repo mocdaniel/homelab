@@ -80,3 +80,5 @@ spec:
                 secretKeyRef:
                   name: semaphore-credentials
                   key: accesskey
+            - name: SEMAPHORE_PORT
+              value: "3000"
