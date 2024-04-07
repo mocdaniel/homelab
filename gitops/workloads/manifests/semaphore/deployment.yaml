@@ -32,17 +32,17 @@ spec:
             - name: SEMAPHORE_DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: cnpg-cluster-semaphore
+                  name: cnpg-cluster-semaphore-app
                   key: username
             - name: SEMAPHORE_DB_PASS
               valueFrom:
                 secretKeyRef:
-                  name: cnpg-cluster-semaphore
+                  name: cnpg-cluster-semaphore-app
                   key: password
             - name: SEMAPHORE_DB_HOST
               valueFrom:
                 secretKeyRef:
-                  name: cnpg-cluster-semaphore
+                  name: cnpg-cluster-semaphore-app
                   key: host
             - name: SEMAPHORE_DB_PORT
               value: "5432"
@@ -51,7 +51,7 @@ spec:
             - name: SEMAPHORE_DB
               valueFrom:
                 secretKeyRef:
-                  name: cnpg-cluster-semaphore
+                  name: cnpg-cluster-semaphore-app
                   key: dbname
             - name: SEMAPHORE_PLAYBOOK_PATH
               value: /tmp/semaphore
