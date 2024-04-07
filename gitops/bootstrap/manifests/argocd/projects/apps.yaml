@@ -21,6 +21,8 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: ghostfolio
       server: https://kubernetes.default.svc
+    - namespace: semaphore
+      server: https://kubernetes.default.svc
   orphanedResources:
     warn: true
   sourceNamespaces:
