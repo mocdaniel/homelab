@@ -10,14 +10,14 @@ services:
       - "traefik.http.routers.homepage.tls=true"
       - "traefik.http.routers.homepage.tls.certresolver=letsencrypt"
       - wud.tag.include=^v\d+\.\d+\.\d+$$
-    image: ghcr.io/gethomepage/homepage:v0.8.8
+    image: ghcr.io/gethomepage/homepage:v0.8.10
     container_name: homepage
     environment:
       HOMEPAGE_VAR_PORTAINER_TOKEN: ${HOMEPAGE_VAR_PORTAINER_TOKEN}
       HOMEPAGE_VAR_TRAEFIK_PASSWORD: ${HOMEPAGE_VAR_TRAEFIK_PASSWORD}
       HOMEPAGE_VAR_GHOSTFOLIO_TOKEN: ${HOMEPAGE_VAR_GHOSTFOLIO_TOKEN}
     volumes:
-      - ./config:/app/config  # this only works with Portainer
+      - ./config:/app/config # this only works with Portainer
       - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: unless-stopped
     networks:
