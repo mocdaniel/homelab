@@ -1,0 +1,22 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tetragon
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" # sync first
+spec:
+  destination:
+    name: in-cluster
+    namespace: kube-system
+  project: infrastructure
+  source:
+    chart: tetragon
+    repoURL: https://helm.cilium.io
+    targetRevision: 1.0.3
+  syncPolicy:
+    automated:
+      selfHeal: true
