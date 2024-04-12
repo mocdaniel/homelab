@@ -38,7 +38,7 @@ data:
               type: pihole
               url: http://192.168.1.3/
               version: 5
-              key: "{{PIHOLE_API_KEY}}"
+              key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"
     - Website:
         - Blog:
             href: https://dbodky.me/

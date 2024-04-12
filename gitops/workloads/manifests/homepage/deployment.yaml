@@ -38,7 +38,7 @@ spec:
                 secretKeyRef:
                   name: homepage-secrets
                   key: ghostfolio-token
-            - name: PIHOLE_API_KEY
+            - name: HOMEPAGE_VAR_PIHOLE_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: homepage-secrets
