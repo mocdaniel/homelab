@@ -31,11 +31,16 @@ spec:
               containerPort: 3000
               protocol: TCP
           env:
-            - name: HOMEPAGE_VAR_GHOSTFOLIO_TOKEN
+            - name: GHOSTFOLIO_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: homepage-secrets
                   key: ghostfolio-token
+            - name: PIHOLE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: homepage-secrets
+                  key: pihole-api-key
           volumeMounts:
             - mountPath: /app/config/kubernetes.yaml
               name: homepage-config
