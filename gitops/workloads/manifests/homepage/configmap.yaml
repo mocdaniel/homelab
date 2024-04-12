@@ -25,17 +25,16 @@ data:
       Website:
         style: col
     useEqualHeights: true
+
   services.yaml: |
-    - Finances:
-        - Ghostfolio:
-            href: https://ghostfolio.bodkys.house/
-            siteMonitor: https://ghostfolio.bodkys.house
-            description: One app to track them all
-            icon: ghostfolio
-            widget:
-              type: ghostfolio
-              url: https://ghostfolio.bodkys.house
-              key: "{{HOMEPAGE_VAR_GHOSTFOLIO_TOKEN}}"
+    - Finances: []
+    - Home Network:
+        - Pihole:
+            type: pihole
+            href: http://pi.hole/
+            siteMonitor: http://pi.hole/
+            description: Network-wide Ad Blocking
+            icon: pihole         
     - Website:
         - Blog:
             href: https://dbodky.me/
