@@ -17,6 +17,8 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: homepage
+      annotations:
+        policy.cilium.io/proxy-visibility: "<Egress/80/TCP/HTTP>"
     spec:
       serviceAccountName: homepage
       automountServiceAccountToken: true
