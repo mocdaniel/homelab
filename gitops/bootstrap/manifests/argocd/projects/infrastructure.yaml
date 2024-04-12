@@ -52,4 +52,4 @@ spec:
     - https://vmware-tanzu.github.io/helm-charts
     - https://cloudnative-pg.github.io/charts
     - https://github.com/mocdaniel/homelab.git
-    - https://charts.cilium.io
+    - https://helm.cilium.io
