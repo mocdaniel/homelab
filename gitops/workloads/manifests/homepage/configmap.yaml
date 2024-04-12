@@ -31,10 +31,10 @@ data:
     - Home Network:
         - Pihole:
             type: pihole
-            href: http://pi.hole/
-            siteMonitor: http://pi.hole/
+            href: http://192.168.1.3/
+            siteMonitor: http://192.168.1.3/
             description: Network-wide Ad Blocking
-            icon: pihole         
+            icon: pi-hole         
     - Website:
         - Blog:
             href: https://dbodky.me/
