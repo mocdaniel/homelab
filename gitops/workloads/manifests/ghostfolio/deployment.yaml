@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: ghostfolio
-          image: ghostfolio/ghostfolio:2.70.0
+          image: ghostfolio/ghostfolio:2.75.1
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
