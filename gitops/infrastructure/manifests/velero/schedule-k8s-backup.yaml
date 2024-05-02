@@ -10,4 +10,4 @@ spec:
   schedule: 0 1 * * *
   template:
     includeClusterResources: true
-  useOwnerReferencesInBackup: true
+  useOwnerReferencesInBackup: false
