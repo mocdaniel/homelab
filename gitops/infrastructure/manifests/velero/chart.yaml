@@ -64,6 +64,7 @@ spec:
           extraSecretRef: civo-s3-credentials
         snapshotsEnabled: false
         deployNodeAgent: true
+        useOwnerReferencesInBackup: false
   syncPolicy:
     automated:
       selfHeal: true
