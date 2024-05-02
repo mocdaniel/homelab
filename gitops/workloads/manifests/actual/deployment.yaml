@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: actual
-          image: actualbudget/actual-server:edge
+          image: actualbudget/actual-server:24.4.0
           imagePullPolicy: Always
           ports:
             - name: http
