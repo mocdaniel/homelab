@@ -27,7 +27,7 @@ spec:
               containerPort: 3000
               protocol: TCP
           volumeMounts:
-            - mountPath: /data
+            - mountPath: /data/data
               name: linkwarden-data
           env:
             - name: DATABASE_URL
