@@ -23,6 +23,8 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: semaphore
       server: https://kubernetes.default.svc
+    - namespace: linkwarden
+      server: https://kubernetes.default.svc
   orphanedResources:
     warn: true
   sourceNamespaces:
