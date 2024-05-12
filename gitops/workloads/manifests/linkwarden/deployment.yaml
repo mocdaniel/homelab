@@ -35,6 +35,8 @@ spec:
                 secretKeyRef:
                   name: cnpg-cluster-linkwarden-app
                   key: uri
+            - name: NEXTAUTH_URL
+              value: https://linkwarden.bodkys.house/api/v1/auth
             - name: NEXTAUTH_SECRET
               valueFrom:
                 secretKeyRef:
