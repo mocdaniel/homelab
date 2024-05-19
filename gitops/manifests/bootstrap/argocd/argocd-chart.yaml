@@ -41,6 +41,7 @@ spec:
           ingress:
             enabled: true
             tls: true
+            ingressClassName: nginx
             annotations:
               nginx.ingress.kubernetes.io/force-ssl: "true"
               nginx.ingress.kubernetes.io/ssl-passthrough: "true"
