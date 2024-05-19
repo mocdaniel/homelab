@@ -25,7 +25,7 @@ spec:
           tag: 0.5.4
         region: FRA1
   syncPolicy:
-    #    automated:
-    #      selfHeal: true
+    automated:
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true

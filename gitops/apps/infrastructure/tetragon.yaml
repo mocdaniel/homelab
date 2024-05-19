@@ -20,5 +20,5 @@ spec:
     helm:
       releaseName: tetragon
   syncPolicy:
-#    automated:
-#      selfHeal: true
+    automated:
+      selfHeal: true

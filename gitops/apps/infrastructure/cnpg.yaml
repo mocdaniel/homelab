@@ -20,7 +20,7 @@ spec:
     helm:
       releaseName: cnpg
   syncPolicy:
-    #    automated:
-    #      selfHeal: true
+    automated:
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true

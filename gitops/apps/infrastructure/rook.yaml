@@ -22,7 +22,7 @@ spec:
       valuesObject:
         enableDiscoveryDaemon: true
   syncPolicy:
-    #    automated:
-    #      selfHeal: true
+    automated:
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true

@@ -17,7 +17,7 @@ spec:
     repoURL: https://github.com/mocdaniel/homelab.git
     path: gitops/manifests/infrastructure/velero
   syncPolicy:
-    #    automated:
-    #      selfHeal: true
+    automated:
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true

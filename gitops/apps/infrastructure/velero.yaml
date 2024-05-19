@@ -66,8 +66,7 @@ spec:
         snapshotsEnabled: false
         deployNodeAgent: true
   syncPolicy:
-    #    automated:
-    #      selfHeal: true
-    #      prune: false
+    automated:
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
