@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rook
+  name: rook-chart
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1" # sync first
@@ -18,7 +18,8 @@ spec:
     repoURL: https://charts.rook.io/release
     targetRevision: v1.13.5
     helm:
-      values: |
+      releaseName: rook
+      valuesObject:
         enableDiscoveryDaemon: true
   syncPolicy:
     #    automated:
