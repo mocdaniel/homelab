@@ -9,17 +9,14 @@ machine:
       - interface: enx8e8dc297949f
         dhcp: true
         vip:
-          ip: 192.168.1.80
+          ip: 192.168.1.15
     extraHostEntries:
-      - ip: 192.168.1.122
+      - ip: 192.168.1.12
         aliases:
           - turing-2
-      - ip: 192.168.1.123
+      - ip: 192.168.1.13
         aliases:
           - turing-3
-      - ip: 192.168.1.124
-        aliases:
-          - turing-4
   install:
     disk: /dev/mmcblk0
 cluster:

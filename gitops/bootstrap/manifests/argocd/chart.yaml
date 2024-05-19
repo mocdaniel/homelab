@@ -48,7 +48,6 @@ spec:
               gethomepage.dev/group: Cluster Management
               gethomepage.dev/icon: argocd.png
               gethomepage.dev/name: ArgoCD
-
   syncPolicy:
     automated:
       selfHeal: true

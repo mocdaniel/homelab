@@ -9,17 +9,14 @@ machine:
       - interface: enxdad8820874de
         dhcp: true
         vip:
-          ip: 192.168.1.80
+          ip: 192.168.1.15
     extraHostEntries:
-      - ip: 192.168.1.121
+      - ip: 192.168.1.11
         aliases:
           - turing-1
-      - ip: 192.168.1.122
+      - ip: 192.168.1.12
         aliases:
           - turing-2
-      - ip: 192.168.1.124
-        aliases:
-          - turing-4
   install:
     disk: /dev/mmcblk0
 cluster:

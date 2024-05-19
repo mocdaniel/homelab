@@ -18,5 +18,5 @@ spec:
     repoURL: https://helm.cilium.io
     targetRevision: 1.0.3
   syncPolicy:
-    automated:
-      selfHeal: true
+#    automated:
+#      selfHeal: true

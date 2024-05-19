@@ -26,7 +26,7 @@ spec:
             enable-ssl-passthrough: "true"
             default-ssl-certificate: "ingress-nginx/bodkys-house-wildcard"
   syncPolicy:
-    automated:
-      selfHeal: true
+    #    automated:
+    #      selfHeal: true
     syncOptions:
       - CreateNamespace=true
