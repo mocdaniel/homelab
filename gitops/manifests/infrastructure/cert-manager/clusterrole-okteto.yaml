@@ -1,0 +1,10 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: civo-creator
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" # sync first
+rules:
+  - apiGroups: ["civo.webhook.okteto.com"]
+    resources: ["civo"]
+    verbs: ["create"]

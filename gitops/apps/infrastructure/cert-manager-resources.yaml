@@ -7,7 +7,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "2" # sync second
+    argocd.argoproj.io/sync-wave: "3" # sync third
 spec:
   destination:
     name: in-cluster
@@ -15,7 +15,7 @@ spec:
   project: infrastructure
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: gitops/infrastructure/manifests/cert-manager
+    path: gitops/manifests/infrastructure/cert-manager
     directory:
       recurse: true
   syncPolicy:
