@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: argocd-chart
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -14,9 +14,9 @@ spec:
   source:
     chart: argo-cd
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: 6.2.4
+    targetRevision: 6.9.3
     helm:
-      values: |
+      valuesObject:
         configs:
           cm:
             resource.customizations.health.argoproj.io_Application: |
