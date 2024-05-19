@@ -2,12 +2,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-dns
+  name: velero-resources
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "2" # sync second
+    argocd.argoproj.io/sync-wave: "4" # sync fourth
 spec:
   destination:
     name: in-cluster
@@ -15,9 +15,7 @@ spec:
   project: infrastructure
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: gitops/infrastructure/manifests/external-dns
-    directory:
-      recurse: true
+    path: gitops/manifests/infrastructure/velero
   syncPolicy:
     #    automated:
     #      selfHeal: true

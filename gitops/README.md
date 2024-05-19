@@ -67,9 +67,10 @@ order** can be found below.
 |[external-dns](https://kubernetes-sigs.github.io/external-dns/v0.14.0/)|**2**|Creates **DNS entries** for applications|
 |[cert-manager-webhook-civo](https://github.com/okteto/cert-manager-webhook-civo)|**3**|Uses [Civo](https://civo.com) for solving **DNS-01 challenges**|
 |cert-manager resources|**3**|Certificates, Issuers, and secrets needed for the cluster|
-|[velero](https://velero.io)|**2**|Automated backup solution|
+|[velero](https://velero.io)|**3**|Automated backup solution|
 |[ingress-nginx](https://kubernetes.github.io/ingress-nginx)|**3**|**Ingress controller** for applications|
 |Ceph Clusters|**4**|Ceph cluster(s) managed by Rook|
+|velero resources|**4**|Backup schedules etc.|
 
 Those applications themselves may contain multiple resources again
 (e.g. an `Application` installing the Helmchart and some `CRDs`),
