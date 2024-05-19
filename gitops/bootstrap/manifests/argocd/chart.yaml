@@ -49,7 +49,7 @@ spec:
               gethomepage.dev/icon: argocd.png
               gethomepage.dev/name: ArgoCD
   syncPolicy:
-    automated:
-      selfHeal: true
+    #    automated:
+    #      selfHeal: true
     syncOptions:
       - CreateNamespace=true
