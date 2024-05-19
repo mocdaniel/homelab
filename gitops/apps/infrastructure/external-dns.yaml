@@ -2,24 +2,38 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-dns
+  name: external-dns-chart
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: "2" # sync second
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name: in-cluster
-    namespace: argocd
+    namespace: external-dns
   project: infrastructure
   source:
-    repoURL: https://github.com/mocdaniel/homelab.git
-    path: gitops/infrastructure/manifests/external-dns
-    directory:
-      recurse: true
+    chart: external-dns
+    repoURL: https://kubernetes-sigs.github.io/external-dns
+    targetRevision: 1.14.3
+    helm:
+      releaseName: external-dns
+      valuesObject:
+        env:
+          - name: CIVO_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: civo-token
+                key: token
+        sources:
+          - ingress
+        domain_filters:
+          - bodkys.house
+        provider:
+          name: civo
   syncPolicy:
-    #    automated:
-    #      selfHeal: true
+    automated:
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true

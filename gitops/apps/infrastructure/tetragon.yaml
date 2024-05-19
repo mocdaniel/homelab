@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tetragon
+  name: tetragon-chart
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -17,6 +17,8 @@ spec:
     chart: tetragon
     repoURL: https://helm.cilium.io
     targetRevision: 1.0.3
+    helm:
+      releaseName: tetragon
   syncPolicy:
 #    automated:
 #      selfHeal: true

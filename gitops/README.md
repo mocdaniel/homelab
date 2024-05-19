@@ -62,11 +62,11 @@ order** can be found below.
 |[rook](https://rook.io)|**1**|[Ceph](https://ceph.com) controller|
 |[cnpg](https://cloudnative-pg.io)|**1**|A PostgreSQL operator|
 |[tetragon](https://tetragon.io)|**1**|eBPF-based runtime observability|
-|External Secret SecretStores|**2**|Reference to the secret store(s)|
+|external-secrets resources|**2**|Reference to the secret store(s)|
 |[cert-manager](https://cert-manager.io)|**2**|Provides certificates for applications|
-|[cert-manager-webhook-civo](https://github.com/okteto/cert-manager-webhook-civo)|**3**|Uses [Civo](https://civo.com) for solving **DNS-01 challenges**|
-|Cert-Manager resources|**3**|Certificates, Issuers, and secrets needed for the cluster|
 |[external-dns](https://kubernetes-sigs.github.io/external-dns/v0.14.0/)|**2**|Creates **DNS entries** for applications|
+|[cert-manager-webhook-civo](https://github.com/okteto/cert-manager-webhook-civo)|**3**|Uses [Civo](https://civo.com) for solving **DNS-01 challenges**|
+|cert-manager resources|**3**|Certificates, Issuers, and secrets needed for the cluster|
 |[velero](https://velero.io)|**2**|Automated backup solution|
 |[ingress-nginx](https://kubernetes.github.io/ingress-nginx)|**3**|**Ingress controller** for applications|
 |Ceph Clusters|**4**|Ceph cluster(s) managed by Rook|
