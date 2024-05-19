@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager-webhook-civo
+  name: cert-manager-webhook-civo-chart
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -18,7 +18,8 @@ spec:
     repoURL: ghcr.io/okteto
     targetRevision: 0.5.4
     helm:
-      values: |
+      releaseName: cert-manager-webhook-civo
+      valuesObject:
         image:
           repository: okteto/civo-webhook
           tag: 0.5.4
