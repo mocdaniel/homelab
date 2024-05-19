@@ -5,7 +5,7 @@ metadata:
   name: velero-chart
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "3" # sync third
+    argocd.argoproj.io/sync-wave: "2" # sync second
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
