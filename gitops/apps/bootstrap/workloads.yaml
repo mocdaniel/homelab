@@ -10,7 +10,7 @@ spec:
   destination:
     name: in-cluster
     namespace: argocd
-  project: apps
+  project: workloads
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
     path: gitops/apps/workloads
