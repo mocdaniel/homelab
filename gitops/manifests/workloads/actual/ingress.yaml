@@ -24,3 +24,6 @@ spec:
                 name: actual
                 port:
                   name: http
+  tls:
+    - hosts:
+        - "actual.bodkys.house"

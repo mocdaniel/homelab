@@ -17,3 +17,6 @@ spec:
                 name: homepage
                 port:
                   number: 3000
+  tls:
+    - hosts:
+        - "home.bodkys.house"

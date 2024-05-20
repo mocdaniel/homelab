@@ -23,3 +23,6 @@ spec:
                 name: ghostfolio
                 port:
                   name: http
+  tls:
+    - hosts:
+        - "ghostfolio.bodkys.house"
