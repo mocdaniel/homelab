@@ -37,6 +37,8 @@ spec:
         name: cert-manager-webhook-civo-ca
       - kind: Secret
         name: cert-manager-webhook-civo-webhook-tls
+      - kind: Secret
+        name: letsencrypt
       - kind: PodDisruptionBudget
         group: policy
         name: rook-ceph-mgr-pdb
