@@ -45,6 +45,7 @@ spec:
             annotations:
               nginx.ingress.kubernetes.io/force-ssl: "true"
               nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+              nginx.ingress.kubernetes.io/rewrite-target: "/"
               gethomepage.dev/description: GitOps for Kubernetes
               gethomepage.dev/enabled: "true"
               gethomepage.dev/group: Cluster Management
