@@ -22,6 +22,19 @@ spec:
           params:
             server.insecure: "true"
           cm:
+            resource.exclusions: |
+              - apiGroups:
+                  - "cilium.io"
+                kinds:
+                  - "Endpoint"
+                clusters:
+                  - "https://kubernetes.default.svc"
+              - apiGroups:
+                  - "velero.io"
+                kinds:
+                  - "Backup"
+                clusters:
+                  - "https://kubernetes.default.svc"
             resource.customizations.health.argoproj.io_Application: |
               hs = {}
               hs.status = "Progressing"

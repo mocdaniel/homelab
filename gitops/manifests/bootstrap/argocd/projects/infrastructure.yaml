@@ -5,11 +5,6 @@ metadata:
   name: infrastructure
   namespace: argocd
 spec:
-  clusterResourceBlacklist:
-    - group: cilium.io
-      kind: CiliumEndpoint
-    - group: velero.io
-      kind: Backup
   clusterResourceWhitelist:
     - group: "*"
       kind: "*"
