@@ -37,6 +37,14 @@ spec:
         name: cert-manager-webhook-civo-ca
       - kind: Secret
         name: cert-manager-webhook-civo-webhook-tls
+      - kind: PodDisruptionBudget
+        group: policy
+        name: rook-ceph-mgr-pdb
+      - kind: PodDisruptionBudget
+        group: policy
+        name: rook-ceph-mon-pdb
+      - kind: ConfigMap
+        name: rook-ceph-pdbstatemap
   sourceNamespaces:
     - argocd
   sourceRepos:
