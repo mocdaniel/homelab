@@ -10,13 +10,12 @@ spec:
   destination:
     name: in-cluster
     namespace: homepage
-  project: apps
+  project: workloads
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: gitops/workloads/manifests/homepage
+    path: gitops/manifests/workloads/homepage
   syncPolicy:
     automated:
       selfHeal: true
-      prune: true
     syncOptions:
       - CreateNamespace=true

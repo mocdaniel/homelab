@@ -2,21 +2,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apps
+  name: actual
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name: in-cluster
-    namespace: argocd
-  project: apps
+    namespace: actual
+  project: workloads
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: gitops/workloads/apps
+    path: gitops/manifests/workloads/actual
   syncPolicy:
-    #    automated:
-    #      selfHeal: true
-    #      prune: true
+    automated:
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true

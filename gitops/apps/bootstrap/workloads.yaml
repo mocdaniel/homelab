@@ -2,20 +2,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ghostfolio
+  name: workloads
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name: in-cluster
-    namespace: ghostfolio
+    namespace: argocd
   project: apps
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
-    path: gitops/workloads/manifests/ghostfolio
+    path: gitops/apps/workloads
   syncPolicy:
-    automated:
-      selfHeal: true
+    #    automated:
+    #      selfHeal: true
+    #      prune: true
     syncOptions:
       - CreateNamespace=true
