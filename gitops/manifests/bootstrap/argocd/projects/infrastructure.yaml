@@ -41,8 +41,6 @@ spec:
         name: letsencrypt
       - kind: Secret
         name: ingress-nginx-admission
-      - kind: Secret
-        name: velero-repo-credentials
       - kind: PodDisruptionBudget
         group: policy
         name: rook-ceph-mgr-pdb
@@ -51,12 +49,6 @@ spec:
         name: rook-ceph-mon-pdb
       - kind: ConfigMap
         name: rook-ceph-pdbstatemap
-      - kind: Backup
-        group: velero
-        name: "*"
-      - kind: BackupRepository
-        group: velero
-        name: "*"
   sourceNamespaces:
     - argocd
   sourceRepos:
