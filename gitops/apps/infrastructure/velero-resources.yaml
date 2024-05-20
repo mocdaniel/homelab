@@ -11,7 +11,7 @@ metadata:
 spec:
   destination:
     name: in-cluster
-    namespace: argocd
+    namespace: velero
   project: infrastructure
   source:
     repoURL: https://github.com/mocdaniel/homelab.git
