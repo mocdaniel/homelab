@@ -39,6 +39,8 @@ spec:
         name: cert-manager-webhook-civo-webhook-tls
       - kind: Secret
         name: letsencrypt
+      - kind: Secret
+        name: ingress-nginx-admission
       - kind: PodDisruptionBudget
         group: policy
         name: rook-ceph-mgr-pdb
