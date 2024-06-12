@@ -48,6 +48,55 @@ spec:
                 end
               end
               return hs
+          repositories:
+            argo:
+              url: https://argoproj.github.io/argo-helm
+              name: argo
+              type: helm
+              project: argocd
+            cert-manager-webhook-civo:
+              url: ghcr.io/okteto # no https because OCI
+              name: cert-manager-webhook-civo
+              type: helm
+              project: argocd
+              enableOCI: "true"
+            cert-manager:
+              url: https://charts.jetstack.io
+              name: cert-manager
+              type: helm
+              project: argocd
+            cnpg:
+              url: https://cloudnative-pg.github.io/charts
+              name: cnpg
+              type: helm
+              project: argocd
+            external-dns:
+              url: https://kubernetes-sigs.github.io/external-dns
+              name: external-dns
+              type: helm
+              project: argocd
+            external-secrets:
+              url: https://charts.external-secrets.io
+              name: external-secrets
+              type: helm
+              project: argocd
+            homelab:
+              url: https://github.com/mocdaniel/homelab.git
+              name: homelab
+              type: git
+            ingress-nginx:
+              url: https://kubernetes.github.io/ingress-nginx
+              name: ingress-nginx
+              type: helm
+              project: infrastructure
+            rook:
+              url: https://charts.rook.io/release
+              name: rook
+              type: helm
+            velero:
+              url: https://vmware-tanzu.github.io/helm-charts
+              name: velero
+              type: helm
           secret:
             argocdServerAdminPassword: "$2a$10$5CsSK3647KGsYW1u12XanuzjKT32wvLLomcaNsQYuH14or4BiLmy6"
         global:
