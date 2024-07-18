@@ -9,5 +9,7 @@ metadata:
 spec:
   schedule: 0 1 * * *
   template:
-    includeClusterResources: true
+    includedNamespaces:
+      - actual
+      - ghostfolio
   useOwnerReferencesInBackup: false
