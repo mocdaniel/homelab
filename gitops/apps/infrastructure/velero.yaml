@@ -51,6 +51,9 @@ spec:
                 region: "civo"
                 s3ForcePathStyle: "true"
                 s3Url: https://objectstore.fra1.civo.com
+                # Disable checksumAlgorithm to avoid issues with Minio
+                # https://github.com/vmware-tanzu/velero-plugin-for-aws/pull/197
+                checksumAlgorithm: ""
           defaultBackupStorageLocation: civo
           defaultSnapshotMoveData: true
           features: EnableCSI
