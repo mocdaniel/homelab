@@ -20,8 +20,7 @@ the configs **with** applied patches, using the saved
 
 ```console
 talosctl gen config --with-secrets secrets.yaml \
-  talos https://192.168.1.80:6443 \
-  --kubernetes-version 1.28.7 \
+  talos https://192.168.1.15:6443 \
   --force
 ```
 
@@ -37,24 +36,19 @@ Applying the config for the first time can be done like this:
 
 ```console
 talosctl apply-config --insecure \
-  -n 192.168.1.121 \
+  -n 192.168.1.11 \
   -f controlplane.yaml \
   -p @turing-1.yaml
 
 talosctl apply-config --insecure \
-  -n 192.168.1.122 \
+  -n 192.168.1.12 \
   -f controlplane.yaml \
   -p @turing-2.yaml
 
 talosctl apply-config --insecure \
-  -n 192.168.1.123 \
+  -n 192.168.1.13 \
   -f controlplane.yaml \
   -p @turing-3.yaml
-
-talosctl apply-config --insecure \
-  -n 192.168.1.124 \
-  -f worker.yaml \
-  -p @turing-4.yaml
 ```
 
 ### Update Configuration
@@ -110,16 +104,16 @@ Bootstrap the Kubernetes cluster with the following command:
 
 ```console
 talosctl bootstrap \
-  -n 192.168.1.121 \
-  -e 192.168.1.121
+  -n 192.168.1.11 \
+  -e 192.168.1.11
 ```
 
 Export the kubeconfig:
 
 ```console
 talosctl kubeconfig \
-  -n 192.168.1.121 \
-  -e 192.168.1.121
+  -n 192.168.1.11 \
+  -e 192.168.1.11
 ```
 
 **It may take a few minutes** until the cluster is fully bootstrapped.
