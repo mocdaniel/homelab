@@ -89,14 +89,11 @@ spec:
               name: ingress-nginx
               type: helm
               project: infrastructure
-            rook:
-              url: https://charts.rook.io/release
-              name: rook
+            longhorn:
+              url: https://charts.longhorn.io/
+              name: longhorn
               type: helm
-            velero:
-              url: https://vmware-tanzu.github.io/helm-charts
-              name: velero
-              type: helm
+              project: infrastructure
           secret:
             argocdServerAdminPassword: "$2a$10$5CsSK3647KGsYW1u12XanuzjKT32wvLLomcaNsQYuH14or4BiLmy6"
         global:
