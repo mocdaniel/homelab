@@ -22,8 +22,8 @@ spec:
         persistence:
           migratable: true
         defaultSettings:
-          backupTarget: AWS
-          backupTargetCredentialSecret: longhorn-backup-credentials
+          backupTarget: s3://cloud-bucket@objectstore.fra1.civo.com/longhorn/
+          backupTargetCredentialSecret: civo-s3-credentials
           defaultDataPath: /var/lib/longhorn/
           storageOverProvisioningPercentage: 120
           defaultLonghornStaticStoraegClass: longhorn
