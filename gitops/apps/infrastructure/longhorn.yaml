@@ -34,7 +34,6 @@ spec:
           enabled: true
           host: longhorn.bodkys.house
           tls: true
-          tlsSecret: longhorn-tls
         preUpgradeChecker:
           jobEnabled: false
   syncPolicy:
