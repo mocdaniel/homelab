@@ -25,6 +25,7 @@ spec:
     - namespace: argocd
       server: https://kubernetes.default.svc
     - namespace: longhorn-system
+      server: https://kubernetes.default.svc
   orphanedResources:
     warn: true
     ignore:
@@ -49,4 +50,4 @@ spec:
     - https://cloudnative-pg.github.io/charts
     - https://github.com/mocdaniel/homelab.git
     - https://helm.cilium.io
-    - https://charts.longhorn.io
+    - https://charts.longhorn.io/

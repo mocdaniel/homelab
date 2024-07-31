@@ -39,14 +39,14 @@ doppler run --command='kubectl create secret -n kube-system \
 Bootstrap ArgoCD to manage itself:
 
 ```console
-kubectl apply -f bootstrap/apps/argocd.yaml
+kubectl apply -f apps/bootstrap/argocd.yaml
 ```
 
 Then, once the application is **in sync**, bootstrap all of the
 remaining infrastructure:
 
 ```console
-kubectl apply -f bootstrap/apps/bootstrap.yaml
+kubectl apply -f apps/bootstrap/infrastructure.yaml
 ```
 
 This will apply an `Application` CRD referencing the `infrastructure/apps`
