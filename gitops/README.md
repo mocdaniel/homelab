@@ -60,14 +60,12 @@ order** can be found below.
 |-------------|-----------|---------|
 |[external-secrets](https://external-secrets.io)|**1**|Fetches secrets from [Doppler](https://doppler.com)|
 |[ingress-nginx](https://kubernetes.github.io/ingress-nginx)|**1**|**Ingress controller** for applications|
-|[rook](https://rook.io)|**1**|[Ceph](https://ceph.com) controller|
+|[longhorn](https://longhorn.io)|**1**|Distributed storage for Kubernetes|
 |[cnpg](https://cloudnative-pg.io)|**1**|A PostgreSQL operator|
 |[tetragon](https://tetragon.io)|**1**|eBPF-based runtime observability|
 |external-secrets resources|**2**|Reference to the secret store(s)|
 |[cert-manager](https://cert-manager.io)|**2**|Provides certificates for applications|
 |[external-dns](https://kubernetes-sigs.github.io/external-dns/v0.14.0/)|**2**|Creates **DNS entries** for applications|
-|[velero](https://velero.io)|**2**|Automated backup solution|
-|velero resources|**3**|Backup schedules etc.|
 |[cert-manager-webhook-civo](https://github.com/okteto/cert-manager-webhook-civo)|**3**|Uses [Civo](https://civo.com) for solving **DNS-01 challenges**|
 |cert-manager resources|**3**|Certificates, Issuers, and secrets needed for the cluster|
 |Ceph Clusters|**4**|Ceph cluster(s) managed by Rook|

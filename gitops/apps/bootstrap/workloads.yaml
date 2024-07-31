@@ -15,8 +15,8 @@ spec:
     repoURL: https://github.com/mocdaniel/homelab.git
     path: gitops/apps/workloads
   syncPolicy:
-    #    automated:
-    #      selfHeal: true
-    #      prune: true
+    automated:
+      selfHeal: true
+      prune: true
     syncOptions:
       - CreateNamespace=true

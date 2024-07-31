@@ -1,0 +1,42 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: longhorn
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" # sync first
+spec:
+  destination:
+    name: in-cluster
+    namespace: longhorn-system
+  project: infrastructure
+  source:
+    chart: longhorn
+    repoURL: https://charts.longhorn.io/
+    targetRevision: 1.6.2
+    helm:
+      valuesObject:
+        networkPolicies:
+          enabled: true
+        persistence:
+          migratable: true
+        defaultSettings:
+          backupTarget: AWS
+          backupTargetCredentialSecret: longhorn-backup-credentials
+          defaultDataPath: /var/lib/longhorn/
+          storageOverProvisioningPercentage: 120
+          defaultLonghornStaticStoraegClass: longhorn
+          backupstorePollInterval: 1800
+        ingress:
+          enabled: true
+          host: longhorn.bodkys.house
+          tls: true
+          tlsSecret: longhorn-tls
+  syncPolicy:
+    #    automated:
+    #      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

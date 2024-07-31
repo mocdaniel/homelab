@@ -14,4 +14,4 @@ spec:
         name: ghostfolio-credentials
   storage:
     size: 8Gi
-    storageClass: ceph-block-postgres
+    storageClass: longhorn
