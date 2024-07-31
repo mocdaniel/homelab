@@ -35,10 +35,8 @@ spec:
           host: longhorn.bodkys.house
           tls: true
           tlsSecret: longhorn-tls
-        serviceAccount:
-          annotations:
-            argocd.argoproj.io/hook: Sync
-            argocd.argoproj.io/sync-wave: "-1"
+        preUpgradeChecker:
+          jobEnabled: false
   syncPolicy:
     #    automated:
     #      selfHeal: true
