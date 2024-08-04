@@ -1,0 +1,154 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: homepage-chart
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" # sync after needed secrets
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  project: workloads
+  source:
+    chart: homepage
+    repoURL: https://jameswynn.github.io/helm-charts
+    targetRevision: 1.2.3
+    helm:
+      releaseName: homepage
+      valuesObject:
+        enableRbac: true
+        serviceAccount:
+          create: true
+        ingress:
+          main:
+            enabled: true
+            hosts:
+              - host: "home.bodkys.house"
+                http:
+                  paths:
+                    - path: "/"
+                      pathType: Prefix
+                      backend:
+                        service:
+                          port:
+                            number: 3000
+            tls:
+              - hosts:
+                  - home.bodkys.house
+        config:
+          kubernetes:
+            mode: cluster
+          settings:
+            title: My dashboard
+            background:
+              image: https://images.unsplash.com/photo-1513407030348-c983a97b98d8?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+              blur: sm
+              opacity: 50
+            cardBlur: md
+            statusStyle: dot
+            layout:
+              Infrastructure:
+                style: row
+                columns: 4
+              Finances:
+                style: col
+            useEqualHeights: true
+          services:
+            - Finances:
+                - Actual:
+                    href: https://actual.bodkys.house/
+                    siteMonitor: actual.actual.svc/
+                    description: Budgeting made easy
+                    icon: actual
+                - Ghostfolio:
+                    href: https://ghostfolio.bodkys.house/
+                    siteMonitor: ghostfolio.ghostfolio.svc/
+                    description: Tracking assets in all places
+                    icon: ghostfolio
+                    widget:
+                      type: ghostfolio
+                      url: ghostfolio.ghostfolio.svc/
+                      key: "{{HOMEPAGE_VAR_GHOSTFOLIO_TOKEN}}"
+            - Home Network:
+                - Pihole:
+                    href: http://192.168.1.3/
+                    siteMonitor: http://192.168.1.3/
+                    description: Network-wide Ad Blocking
+                    icon: pi-hole
+                    widget:
+                      type: pihole
+                      url: http://192.168.1.3/
+                      version: 5
+                      key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"
+            - Website:
+                - Blog:
+                    href: https://dbodky.me/
+                    siteMonitor: https://dbodky.me
+                    description: My personal blog
+                    icon: hugo
+                - Umami:
+                    href: https://umami.bodkys.house/
+                    siteMonitor: https://umami.bodkys.house/
+                    description: My personal analytics
+                    icon: umami
+            - Cluster Management:
+                - ArgoCD:
+                    href: https://argocd.bodkys.house/
+                    siteMonitor: argocd-server.argocd.svc
+                    description: Cloud-Native GitOps engine
+                    icon: argocd
+          widgets:
+            - kubernetes:
+                cluster:
+                  show: true
+                  cpu: true
+                  memory: true
+                  showLabel: true
+                  label: Talos
+                nodes:
+                  show: true
+                  cpu: true
+                  memory: true
+                  showLabel: true
+            - openmeteo:
+                label: Erlangen
+                latitude: 49.583332
+                longitude: 11.016667
+                timezone: Europe/Berlin
+                units: metric
+                cache: 5
+            - search:
+                provider: google
+                focus: true
+            - datetime:
+                text_size: xl
+                format:
+                  dateStyle: long
+                  timeStyle: long
+                locale: de
+        persistence:
+          logs:
+            enabled: true
+            type: emptyDir
+            mountPath: /app/config/logs
+        env:
+          - name: HOMEPAGE_VAR_GHOSTFOLIO_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: homepage-secrets
+                key: ghostfolio-token
+          - name: HOMEPAGE_VAR_PIHOLE_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: homepage-secrets
+                key: pihole-api-key
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true

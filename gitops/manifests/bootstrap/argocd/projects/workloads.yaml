@@ -27,3 +27,4 @@ spec:
     - argocd
   sourceRepos:
     - https://github.com/mocdaniel/homelab.git
+    - https://jameswynn.github.io/helm-charts

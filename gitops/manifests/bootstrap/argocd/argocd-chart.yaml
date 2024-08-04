@@ -89,6 +89,11 @@ spec:
               name: ingress-nginx
               type: helm
               project: infrastructure
+            jameswynn:
+              url: https://jameswynn.github.io/helm-charts
+              name: jameswynn
+              type: helm
+              project: workloads
             longhorn:
               url: https://charts.longhorn.io/
               name: longhorn
@@ -106,11 +111,6 @@ spec:
             annotations:
               nginx.ingress.kubernetes.io/force-ssl: "true"
               nginx.ingress.kubernetes.io/rewrite-target: "/"
-              gethomepage.dev/description: GitOps for Kubernetes
-              gethomepage.dev/enabled: "true"
-              gethomepage.dev/group: Cluster Management
-              gethomepage.dev/icon: argocd.png
-              gethomepage.dev/name: ArgoCD
   syncPolicy:
     #    automated:
     #      selfHeal: true

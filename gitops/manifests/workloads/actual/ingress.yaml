@@ -6,11 +6,6 @@ metadata:
   labels:
     app.kubernetes.io/name: actual
   annotations:
-    gethomepage.dev/description: Budgeting made easy
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Finances
-    gethomepage.dev/icon: actual.png
-    gethomepage.dev/name: Actual
     nginx.ingress.kubernetes.io/proxy-body-size: "4096m"
 spec:
   rules:

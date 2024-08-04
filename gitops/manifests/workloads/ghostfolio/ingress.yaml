@@ -5,15 +5,6 @@ metadata:
   name: ghostfolio
   labels:
     app.kubernetes.io/name: ghostfolio
-  annotations:
-    gethomepage.dev/description: One app to track them all
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Finances
-    gethomepage.dev/icon: ghostfolio.png
-    gethomepage.dev/name: Ghostfolio
-    gethomepage.dev/widget.type: ghostfolio
-    gethomepage.dev/widget.url: ghostfolio.ghostfolio.svc
-    gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_GHOSTFOLIO_TOKEN}}"
 spec:
   rules:
     - host: "ghostfolio.bodkys.house"
