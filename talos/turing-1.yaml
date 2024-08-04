@@ -1,8 +1,19 @@
 ---
 machine:
+  kernel:
+    modules:
+      - name: rockchip-cpufreq
   kubelet:
     extraArgs:
       rotate-server-certificates: true
+    extraMounts:
+      - destination: /var/lib/longhorn
+        type: bind
+        source: /var/lib/longhorn
+        options:
+          - bind
+          - rshared
+          - rw
   network:
     hostname: turing-1
     interfaces:
@@ -19,6 +30,10 @@ machine:
           - turing-3
   install:
     disk: /dev/mmcblk0
+  disks:
+    - device: /dev/nvme0n1
+      partitions:
+        - mountpoint: /var/lib/longhorn
 cluster:
   network:
     cni:
@@ -29,6 +44,7 @@ cluster:
         configuration:
           exemptions:
             namespaces:
+              - longhorn-system
               - rook-ceph
               - velero
   proxy:
