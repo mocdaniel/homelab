@@ -33,7 +33,7 @@ spec:
               containerPort: 3000
               protocol: TCP
           env:
-            - name: GHOSTFOLIO_TOKEN
+            - name: HOMEPAGE_VAR_GHOSTFOLIO_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: homepage-secrets
