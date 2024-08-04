@@ -28,14 +28,13 @@ spec:
             enabled: true
             hosts:
               - host: "home.bodkys.house"
-                http:
-                  paths:
-                    - path: "/"
-                      pathType: Prefix
-                      backend:
-                        service:
-                          port:
-                            number: 3000
+                paths:
+                  - path: "/"
+                    pathType: Prefix
+                    backend:
+                      service:
+                        port:
+                          number: 3000
             tls:
               - hosts:
                   - home.bodkys.house
