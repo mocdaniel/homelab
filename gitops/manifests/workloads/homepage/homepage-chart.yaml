@@ -63,17 +63,17 @@ spec:
             - Finances:
                 - Actual:
                     href: https://actual.bodkys.house/
-                    siteMonitor: actual.actual.svc/
+                    siteMonitor: http://actual.actual.svc:5006/
                     description: Budgeting made easy
                     icon: actual
                 - Ghostfolio:
                     href: https://ghostfolio.bodkys.house/
-                    siteMonitor: ghostfolio.ghostfolio.svc/
+                    siteMonitor: http://ghostfolio.ghostfolio.svc:3333/
                     description: Tracking assets in all places
                     icon: ghostfolio
                     widget:
                       type: ghostfolio
-                      url: ghostfolio.ghostfolio.svc/
+                      url: http://ghostfolio.ghostfolio.svc:3333
                       key: "{{HOMEPAGE_VAR_GHOSTFOLIO_TOKEN}}"
             - Home Network:
                 - Pihole:
@@ -100,7 +100,7 @@ spec:
             - Cluster Management:
                 - ArgoCD:
                     href: https://argocd.bodkys.house/
-                    siteMonitor: argocd-server.argocd.svc
+                    siteMonitor: http://argocd-server.argocd.svc/
                     description: Cloud-Native GitOps engine
                     icon: argocd
           widgets:
