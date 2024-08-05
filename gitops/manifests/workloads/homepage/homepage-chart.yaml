@@ -20,6 +20,9 @@ spec:
     helm:
       releaseName: homepage
       valuesObject:
+        image:
+          repository: ghcr.io/gethomepage/homepage
+          tag: v0.9.5
         enableRbac: true
         serviceAccount:
           create: true
