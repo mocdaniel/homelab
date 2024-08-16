@@ -1,0 +1,91 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: managemeals-api
+  labels:
+    app.kubernetes.io/name: managemeals-api
+spec:
+  selector:
+    app.kubernetes.io/name: managemeals-api
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: http
+      name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: managemeals-web
+  labels:
+    app.kubernetes.io/name: managemeals-web
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: managemeals-web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: managemeals-mongodb
+  labels:
+    app.kubernetes.io/name: managemeals-mongodb
+spec:
+  selector:
+    app.kubernetes.io/name: managemeals-mongodb
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: mongo
+      name: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: managemeals-redis
+  labels:
+    app.kubernetes.io/name: managemeals-redis
+spec:
+  selector:
+    app.kubernetes.io/name: managemeals-redis
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: redis
+      name: redis
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: managemeals-scraper
+  labels:
+    app.kubernetes.io/name: managemeals-scraper
+spec:
+  selector:
+    app.kubernetes.io/name: managemeals-scraper
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: http
+      name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: managemeals-typesense
+  labels:
+    app.kubernetes.io/name: managemeals-typesense
+spec:
+  selector:
+    app.kubernetes.io/name: managemeals-typesense
+  ports:
+    - protocol: TCP
+      port: 8108
+      targetPort: http
+      name: http

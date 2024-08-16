@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: managemeals-mongodb-data
+  labels:
+    app.kubernetes.io/name: managemeals-mongodb
+spec:
+  resources:
+    requests:
+      storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: managemeals-typesense-data
+  labels:
+    app.kubernetes.io/name: managemeals-typesense
+spec:
+  resources:
+    requests:
+      storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
