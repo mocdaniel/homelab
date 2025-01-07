@@ -60,21 +60,6 @@ spec:
                 style: col
             useEqualHeights: true
           services:
-            - Finances:
-                - Actual:
-                    href: https://actual.bodkys.house/
-                    siteMonitor: http://actual.actual.svc:5006/
-                    description: Budgeting made easy
-                    icon: actual
-                - Ghostfolio:
-                    href: https://ghostfolio.bodkys.house/
-                    siteMonitor: http://ghostfolio.ghostfolio.svc:3333/
-                    description: Tracking assets in all places
-                    icon: ghostfolio
-                    widget:
-                      type: ghostfolio
-                      url: http://ghostfolio.ghostfolio.svc:3333
-                      key: "{{HOMEPAGE_VAR_GHOSTFOLIO_TOKEN}}"
             - Home Network:
                 - Pihole:
                     href: http://192.168.1.3/
@@ -138,11 +123,6 @@ spec:
             type: emptyDir
             mountPath: /app/config/logs
         env:
-          - name: HOMEPAGE_VAR_GHOSTFOLIO_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: homepage-secrets
-                key: ghostfolio-token
           - name: HOMEPAGE_VAR_PIHOLE_API_KEY
             valueFrom:
               secretKeyRef:
